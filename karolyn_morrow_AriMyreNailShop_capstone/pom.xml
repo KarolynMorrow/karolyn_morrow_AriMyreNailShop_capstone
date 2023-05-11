@@ -50,6 +50,8 @@
 			<artifactId>hibernate-annotations</artifactId>
 			<version>3.5.5-Final</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

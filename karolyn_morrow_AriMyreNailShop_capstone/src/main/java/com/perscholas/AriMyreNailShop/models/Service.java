@@ -1,18 +1,16 @@
 package com.perscholas.AriMyreNailShop.models;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 @Entity
-@Table
+
 public class Service {
     @Id
     private int serviceId;
     private String serviceName;
     private int servicePrice;
-    @ManyToOne(targetEntity = Appointment.class)
-    private Appointment appointments;
+    @ManyToOne
+    private Appointment appointment;
 
     public Service() {
     }
@@ -47,11 +45,11 @@ public class Service {
         this.servicePrice = servicePrice;
     }
 
-    public Appointment getAppointments() {
-        return appointments;
+    public Appointment getAppointment() {
+        return appointment;
     }
 
-    public void setAppointments(Appointment appointments) {
-        this.appointments = appointments;
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 }

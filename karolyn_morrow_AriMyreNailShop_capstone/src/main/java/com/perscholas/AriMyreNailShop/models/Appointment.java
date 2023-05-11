@@ -6,13 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointmentId;
     private LocalDate appointmentDate;
-    @OneToMany(targetEntity = Service.class, cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Service> services;
 
     public Appointment() {
