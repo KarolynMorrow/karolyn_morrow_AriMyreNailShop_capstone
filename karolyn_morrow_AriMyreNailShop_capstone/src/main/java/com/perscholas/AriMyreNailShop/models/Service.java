@@ -3,7 +3,6 @@ package com.perscholas.AriMyreNailShop.models;
 import javax.persistence.*;
 
 @Entity
-
 public class Service {
     @Id
     private int serviceId;

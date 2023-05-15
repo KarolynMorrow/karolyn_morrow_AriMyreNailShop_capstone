@@ -14,6 +14,7 @@ public class Appointment {
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Service> services;
 
+
     public Appointment() {
     }
 
@@ -42,4 +43,6 @@ public class Appointment {
     public void setServices(List<Service> services) {
         this.services = services;
     }
+
+
 }

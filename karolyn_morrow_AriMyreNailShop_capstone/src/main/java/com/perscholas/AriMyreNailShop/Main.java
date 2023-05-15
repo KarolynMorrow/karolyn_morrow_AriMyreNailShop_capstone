@@ -1,50 +1,86 @@
 package com.perscholas.AriMyreNailShop;
 
-import com.perscholas.AriMyreNailShop.models.Appointment;
-import com.perscholas.AriMyreNailShop.models.Service;
+import com.perscholas.AriMyreNailShop.models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main extends NailShop {
     public static void main(String[] args) {
-//        Client arykah = new GuestAccount("Arykah", "Jones", "ajones@email.com");
-//        Client ty = new PremiumAccount("Ty", "Thompson", "tyThomas@email.com", "tyJones");
-//
-//        System.out.println(arykah.greetClient());
-//        System.out.println(ty.greetClient());
-//
-//        NailShop AriNailShop = new NailShop();
-//        AriNailShop.addClient(arykah);
-//        AriNailShop.addClient(ty);
-//
-//        // AriNailShop.getAllClients();
-//        AriNailShop.getClient(arykah);
-//        AriNailShop.updateClient(ty);
-        //AriNailShop.deleteClient(arykah);
-
-        //AriNailShop.updateClient(arykah);
-        //Input Premiumaccounts into clientHashMap input guestAccounts into appointmentHashMap
-
-
-//        arykah.returnName();
-//        System.out.println(arykah.returnClientInfo());
-//        System.out.println(ty.returnClientInfo());
-//
-//        ty.setLastName("Morrison");
-//
-//        System.out.println(ty.returnClientInfo());
         SessionFactory factory = new
                 Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
+
+        List<Account> accountList = new ArrayList<>();
+
+        System.out.println("Please choose an option:\n1: Create an account\n2: Continue as a guest");
+        Scanner choice = new Scanner(System.in);
+        int num = choice.nextInt();
+        if (num == 1) {
+            Scanner info = new Scanner(System.in);
+            while (info.hasNextLine()) {
+                String firstName = info.nextLine();
+                String lastName = info.nextLine();
+                LocalDate dateOfBirth = LocalDate.ofEpochDay(info.nextInt());
+                String email = info.nextLine();
+                String userName = info.nextLine();
+                String passWord = info.nextLine();
+
+                PremiumAccount premiumAccount = new PremiumAccount(firstName, lastName, dateOfBirth, email, userName, passWord);
+                accountList.add(premiumAccount);
+                System.out.println("Thank you for registering with AriMyre Nails " + firstName + " " + lastName);
+                session.save(premiumAccount);
+            }
+        } else if(num == 2) {
+            System.out.println("Please input your name and email address:\n");
+            Scanner guestInfo = new Scanner(System.in);
+            String firstName = guestInfo.nextLine();
+            String lastName = guestInfo.nextLine();
+            String email = guestInfo.nextLine();
+            GuestAccount guestAccount = new GuestAccount(firstName, lastName, email);
+            accountList.add(guestAccount);
+            System.out.println("Welcome to AriMyre Nails " + firstName + " " + lastName);
+            session.save(guestAccount);
+
+        }
+
+
+
+
+        GuestAccount arykah = new GuestAccount();
+        arykah.setFirstName("Arykah");
+        arykah.setLastName("Jones");
+        arykah.setEmail("ari@email.com");
+
+        PremiumAccount ty = new PremiumAccount();
+        ty.setFirstName("Tyhe");
+        ty.setLastName("Morrison");
+        ty.setUserName("ty_morr");
+        ty.setPassWord("thankYou");
+        ty.setDateOfBirth(LocalDate.of(1977, 7, 7));
+        ty.setEmail("ty@email.com");
+
+        //Add account objects to list
+        accountList.add(arykah);
+        accountList.add(ty);
+
+        //and save
+        session.save(arykah);
+        session.save(ty);
+
+
+        //Input PremiumAccounts into clientHashMap input guestAccounts into appointmentHashMap
+
 
         Service basicMani = new Service();
         basicMani.setServicePrice(30);
@@ -66,6 +102,7 @@ public class Main extends NailShop {
         services.add(boujeeMani);
         services.add(boujeePedi);
 
+
         session.save(basicMani);
         session.save(basicPedi);
         session.save(boujeeMani);
@@ -73,14 +110,15 @@ public class Main extends NailShop {
 
 
         //Create Appointment
-        Appointment ty = new Appointment();
-        ty.setServices(services);
-        ty.setAppointmentDate(LocalDate.of(2023, 12, 23));
+        Appointment appointment = new Appointment();
+        appointment.setServices(services);
+        appointment.setAppointmentDate(LocalDate.of(2023, 12, 23));
+
 
         //Store Appointment
-        session.save(ty);
+        session.save(appointment);
         t.commit();
     }
 
-    }
+}
 

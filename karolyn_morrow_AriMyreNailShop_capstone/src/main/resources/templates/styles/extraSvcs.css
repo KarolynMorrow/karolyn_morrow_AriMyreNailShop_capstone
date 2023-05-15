@@ -1,0 +1,59 @@
+body {
+    background-color:rgb(0,0,0);background-image:url(http://www.zingerbugimages.com/backgrounds/white_marble_background_seamless.jpg);background-position:top left;background-repeat:repeat;background-attachment:fixed;
+    
+  }
+
+  h1 {
+      text-align: center;
+      text-decoration: underline;
+      font-family: 'Amita', cursive;
+      font-size: 60px;
+      padding-top: 150px;
+  }
+
+  ol {
+    padding-left: 0px;
+  }
+
+  .addOns {
+      font-weight: bold;
+      margin: 50px;
+      font-size: 40px;
+      text-align: center;
+      font-family: 'Amita', cursive;
+  }
+
+  #ariOnly {
+      font-weight: bolder;
+      font-size: 20px;
+      /* margin-top: -10px;
+      margin-left: 20px; */
+      text-align: center;
+
+    }
+
+    .extrasButton {
+        background-color: #fbf7f7;
+        border: none;
+        color: black;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+        border-style: solid;
+        font-size: 30px;
+        font-family: 'Amita', cursive;
+        border-radius: 30px;
+        opacity: 0.6;
+    }
+
+    .extrasButton:hover {
+        background-color: #ebc7c7;
+    }
+
+    .extrasButton:active {
+        background-color: #ebc7c7;
+    }
