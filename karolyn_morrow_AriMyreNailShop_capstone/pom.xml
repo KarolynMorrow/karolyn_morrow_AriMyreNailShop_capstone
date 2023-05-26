@@ -50,8 +50,12 @@
 			<artifactId>hibernate-annotations</artifactId>
 			<version>3.5.5-Final</version>
 		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

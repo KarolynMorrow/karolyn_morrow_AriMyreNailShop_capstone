@@ -1,6 +1,8 @@
 package com.perscholas.AriMyreNailShop.models;
 
 import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,6 +11,8 @@ import java.util.Date;
 import java.util.TreeMap;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "Premium")
 public class PremiumAccount extends Account {
 
@@ -60,57 +64,6 @@ public class PremiumAccount extends Account {
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'';
     }
-    /*GETTERS AND SETTERS*/
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassWord() {
-        return passWord;
-    }
-
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
-
-    public TreeMap<Date, Service> getPreviousService() {
-        return previousService;
-    }
-
-    public void setPreviousService(TreeMap<Date, Service> previousService) {
-        this.previousService = previousService;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-
-
-    }
 
 }

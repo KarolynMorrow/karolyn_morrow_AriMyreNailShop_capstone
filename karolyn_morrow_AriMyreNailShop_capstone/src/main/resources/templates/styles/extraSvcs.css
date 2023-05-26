@@ -32,7 +32,7 @@ body {
 
     }
 
-    .extrasButton {
+    #addOnsbtn {
         background-color: #fbf7f7;
         border: none;
         color: black;
@@ -50,10 +50,10 @@ body {
         opacity: 0.6;
     }
 
-    .extrasButton:hover {
+    #addOnsbtn:hover {
         background-color: #ebc7c7;
     }
 
-    .extrasButton:active {
+    #addOnsbtn:active {
         background-color: #ebc7c7;
     }
