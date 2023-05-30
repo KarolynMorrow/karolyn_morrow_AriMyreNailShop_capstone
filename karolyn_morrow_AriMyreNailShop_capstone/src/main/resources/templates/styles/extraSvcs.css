@@ -7,9 +7,15 @@ body {
       text-align: center;
       text-decoration: underline;
       font-family: 'Amita', cursive;
-      font-size: 60px;
       padding-top: 150px;
   }
+
+    h2 {
+        text-align: right;
+        text-decoration: underline;
+        font-family: 'Amita', cursive;
+        padding-top: 150px;
+    }
 
   ol {
     padding-left: 0px;
@@ -18,14 +24,12 @@ body {
   .addOns {
       font-weight: bold;
       margin: 50px;
-      font-size: 40px;
       text-align: center;
       font-family: 'Amita', cursive;
   }
 
   #ariOnly {
       font-weight: bolder;
-      font-size: 20px;
       /* margin-top: -10px;
       margin-left: 20px; */
       text-align: center;
