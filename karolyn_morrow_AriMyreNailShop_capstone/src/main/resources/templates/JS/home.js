@@ -1,17 +1,17 @@
 function moveToSelected(element) {
 
   if (element == "next") {
-    var selected = $(".selected").next();
+    let selected = $(".selected").next();
   } else if (element == "prev") {
-    var selected = $(".selected").prev();
+    let selected = $(".selected").prev();
   } else {
-    var selected = element;
+    let selected = element;
   }
 
-  var next = $(selected).next();
-  var prev = $(selected).prev();
-  var prevSecond = $(prev).prev();
-  var nextSecond = $(next).next();
+  let next = $(selected).next();
+  let prev = $(selected).prev();
+  let prevSecond = $(prev).prev();
+  let nextSecond = $(next).next();
 
   $(selected).removeClass().addClass("selected");
 
