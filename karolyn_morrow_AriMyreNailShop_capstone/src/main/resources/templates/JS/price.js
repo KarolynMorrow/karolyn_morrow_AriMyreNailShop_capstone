@@ -1,4 +1,4 @@
-//let x = document.getElementById("addOns").value
+
 //make a global variable that takes price and is hidden when === 0; add prices to variable onclick based on value: $amount
 
 //Define global variable
@@ -7,8 +7,8 @@ let totalPrice = 0;
 //Get html element where price will be shown
 const priceDisplay = document.getElementById("total");
 
-//Get html elements where the buttons are located
-const buttons = document.querySelectorAll("addOns");
+//Get html elements where the buttons are located using the tag name
+const buttons = document.querySelectorAll("button");
 
 //Add an onlick eventlistener to each button
 buttons.forEach(button => {
@@ -17,23 +17,32 @@ buttons.forEach(button => {
 
 
         //check if button is pressed
-        const isPressed = button.getAttribute("aria-pressed") === "true";
-        //get the value of the button in extraSvcs.html
-        const amountInput = buttons.value;
+        const isPressed = button.getAttribute("aria-pressed") === "true" ? true : false;
+        console.log(isPressed);
 
+        //get the value of each button individually in extraSvcs.html
+        const amountInput = button.value;
+
+
+        //since button.value is a string parseInt changes value to int type
         if(isPressed){
-        totalPrice += amountInput
+            totalPrice += parseInt(amountInput);
+        } else {
+            totalPrice -= parseInt(amountInput);
         }
 
         if(totalPrice === 0){
-            priceDisplay.style.display = "block";
+            priceDisplay.style.display = "none";
         } else {
             priceDisplay.style.display = "block";
-            priceDisplay.innerHTML = `Total Price: ${totalPrice}`;
+            priceDisplay.textContent = `Total Price: ${totalPrice}`;
         }
 
-    })
+    });
 
-})
+});
+
+
+
 
 

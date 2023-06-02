@@ -96,3 +96,9 @@ a:active {
 color: rgb(216, 185, 13);
 text-align: center;
 }
+
+.btn {
+text-align: center;
+margin-left: 47px;
+
+}

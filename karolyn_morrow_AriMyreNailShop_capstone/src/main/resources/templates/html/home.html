@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/logo.css">
     <link rel="stylesheet" href="../styles/home.css">
-    <script src="../JS/home.js"></script>
+
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,44 +38,102 @@
 </nav>
 <h4>Previous clients</h4>
 <!--Add a carousel with photos-->
-<main>
-    <div id="carousel">
+<section class="product">
+    <h2 class="product-category"></h2>
+    <button class="pre-btn"><img src="../photos/left-arrow.png" alt="Previous button"></button>
+    <button class="nxt-btn"><img src="../photos/right.png" alt="Next button"></button>
+    <div class="product-container">
 
-        <div class="hideLeft">
-            <img src="../photos/Marble%20Medium.jpg">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/Multi-Fingered%20Bling%20XLong.jpg" class="product-thumb" alt="XL Full Hand Bling Set">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Extra Long Full Hand Bling Set</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="prevLeftSecond">
-            <img src="../photos/XLong%20Set.jpg">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/L%20Marble%20accent.jpg" class="product-thumb" alt="Large Marble accent">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Large Pink Marble Accent</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="prev">
-            <img src="../photos/Multi-Fingered%20Bling%20XLong.jpg">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/Marble%20Medium.jpg" class="product-thumb" alt="Medium Marble Set">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Medium Marble Set</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="selected">
-            <img src="../photos/S%20French%20with%20bling%20accent.jpg">
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/S%20French%20with%20bling%20accent.jpg" class="product-thumb" alt="Small french with bling">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Small French Set with 2 finger tip bling</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="next">
-            <img src="../photos/S%20with%20Bling.jpg">
+
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/S%20with%20Bling.jpg" class="product-thumb" alt="Small set with bling">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Small set with tip bling</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="nextRightSecond">
-            <img src="../photos/L%20Marble%20accent.jpg">
+
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">$60</span>
+                <img src="../photos/XLong%20Set.jpg" class="product-thumb" alt="XL Nude Set">
+                <button class="card-btn">See more information</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">Extra Long Nude Set</p>
+                <span class="starting-price">$20</span>
+                <span class="actual-price">$40</span>
+            </div>
         </div>
 
-        <div class="hideRight">
-            <img src="../photos/IMG_3958.jpg">
-        </div>
 
     </div>
+</section>
 
-    <div class="buttons">
-        <button id="prev">Previous</button>
-        <button id="next">Next</button>
-    </div>
-</main>
-
+<script src="../JS/home.js"></script>
 </body>
 </html>
