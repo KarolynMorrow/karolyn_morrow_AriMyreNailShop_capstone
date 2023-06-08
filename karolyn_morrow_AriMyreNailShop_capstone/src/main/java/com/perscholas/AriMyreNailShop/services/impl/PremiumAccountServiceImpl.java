@@ -1,6 +1,6 @@
 package com.perscholas.AriMyreNailShop.services.impl;
 
-import com.perscholas.AriMyreNailShop.model.PremiumAccount;
+import com.perscholas.AriMyreNailShop.models.PremiumAccount;
 import com.perscholas.AriMyreNailShop.repositories.PremiumAccountRepository;
 import com.perscholas.AriMyreNailShop.services.PremiumAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +52,8 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     public void deletePremiumAccount(long id) {
         premiumRepository.deleteById(id);
     }
+
+
 
 
 }

@@ -21,11 +21,11 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public Appointment getAppointmentById(int id){
+    public Appointment getAppointmentById(long id){
         return appointmentRepository.findById(id).get();
     }
 
-    public void deleteById(int id){
+    public void deleteById(long id){
         appointmentRepository.deleteById(id);
     }
 

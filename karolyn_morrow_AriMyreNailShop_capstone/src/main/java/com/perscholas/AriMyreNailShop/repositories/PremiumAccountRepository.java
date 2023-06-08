@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.perscholas.AriMyreNailShop.models.PremiumAccount;
 
 @Repository
-public interface PremiumAccountRepository extends JpaRepository<PremiumAccount, Integer> {
+public interface PremiumAccountRepository extends JpaRepository<PremiumAccount, Long> {
 
 }
