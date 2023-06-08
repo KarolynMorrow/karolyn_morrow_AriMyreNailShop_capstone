@@ -17,13 +17,5 @@ public class GuestAccount extends Account {
 
     }
 
-    @Override
-    public String greetClient() {
-        return ("Welcome: " + getFirstName());
-    }
-
-    @Override
-    public String toString() {
-        return "Guest Account: " + getFirstName() + " " + getLastName() + " " + getEmail();
-    }
+   
 }

@@ -46,11 +46,6 @@ public class PremiumAccount extends Account {
     }
 
 
-    @Override
-    public String greetClient() {
-        return ("Welcome Back: " + getFirstName());
-    }
-
 
     /*METHODS*/
     public boolean isPremium() {

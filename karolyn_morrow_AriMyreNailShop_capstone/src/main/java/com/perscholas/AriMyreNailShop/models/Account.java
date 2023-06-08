@@ -6,10 +6,9 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @MappedSuperclass
-public abstract class Account extends NailShop implements INailShop, Serializable {
+public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Client_Id")
@@ -20,6 +19,7 @@ public abstract class Account extends NailShop implements INailShop, Serializabl
     private String lastName;
     @NotNull
     private String email;
+    private boolean isPremium = false;
 
 
     /*CONSTRUCTOR*/
@@ -36,14 +36,16 @@ public abstract class Account extends NailShop implements INailShop, Serializabl
 
     /*METHODS*/
 
-    public abstract String greetClient();
-
-    @Override
-    public boolean isPremium() {
-        return false;
-    }
 
     /*Getters and Setters*/
+
+    public boolean getIsPremium(){
+        return isPremium;
+    }
+
+    public void setIsPremium(){
+        this.isPremium = isPremium;
+    }
 
     public int getAccountId() {
         return accountId;
