@@ -1,9 +1,7 @@
-package com.perscholas.AriMyreNailShop.controllers;
+package com.perscholas.AriMyreNailShop.premium;
 
 
-import com.perscholas.AriMyreNailShop.models.PremiumAccount;
-import com.perscholas.AriMyreNailShop.services.AppointmentService;
-import com.perscholas.AriMyreNailShop.services.PremiumAccountService;
+import com.perscholas.AriMyreNailShop.appointment.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,38 +31,33 @@ public class PremiumAccountController {
     public String displayRegisterForm(Model model){
         PremiumAccount premiumAccount = new PremiumAccount();
         model.addAttribute("premiumAccount", premiumAccount);
-        return "premiumAccount/register";
+        return "html/signUp";
     }
 
     @PostMapping("/save")
-    public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p,BindingResult result, Model model){
+    public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult result){
         if (result.hasErrors()) {
             return "register";
         }
         //save account to DB
         premiumService.savePremiumAccount(p);
-        return "redirect: /premiumAccount/premiumHome";
+        return "redirect:html/premiumHome";
     }
 
-    @GetMapping("/premiumHome/{id}")
-    public String showPremiumAccountHome(@PathVariable int id, Model model){
+    @GetMapping("/{id}")
+    public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
         model.addAttribute("premiumAccount", premiumService.getPremiumAccountById(id));
-        return "premiumAccount/premiumHome";
+        return "html/premiumHome";
     }
 
     @GetMapping("/edit/{id}")
-    public String updatePremiumForm(@PathVariable int id, Model model){
+    public String updatePremiumForm(@PathVariable(value = "id") long id, Model model){
         PremiumAccount account = premiumService.getPremiumAccountById(id);
         model.addAttribute("account", account);
-       return "premiumAccount/update";
+       return "html/update";
     }
 
-//    @GetMapping("/{idx}")
-//    public String showPremiumAccountPage(@PathVariable("idx") int id){
-//
-//        return ("This is the premium page of: " + id);
-//    }
-
+    //Show a list of past appointments
 
 //@GetMapping("/appointments")
 //    public ModelAndView getAppointments() {
@@ -77,5 +70,7 @@ public class PremiumAccountController {
 //        premiumService.savePremiumAccount(p);
 //        return "redirect:/appointments";
 //    }
+
+
 
 }

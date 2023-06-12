@@ -16,10 +16,10 @@
         <property name="hibernate.show_sql" >true </property>
         <property name="hibernate.format_sql" >true </property>
         <!-- Mapping entity file -->
-        <mapping class="com.perscholas.AriMyreNailShop.models.Service"/>
-        <mapping class="com.perscholas.AriMyreNailShop.models.Appointment"/>
-        <mapping class="com.perscholas.AriMyreNailShop.models.GuestAccount"/>
-        <mapping class="com.perscholas.AriMyreNailShop.models.PremiumAccount"/>
-        <mapping class="com.perscholas.AriMyreNailShop.models.Account"/>
+        <mapping class="com.perscholas.AriMyreNailShop.offered_svc.OfferedService"/>
+        <mapping class="com.perscholas.AriMyreNailShop.appointment.Appointment"/>
+        <mapping class="com.perscholas.AriMyreNailShop.guest.GuestAccount"/>
+        <mapping class="com.perscholas.AriMyreNailShop.premium.PremiumAccount"/>
+        <mapping class="com.perscholas.AriMyreNailShop.account.Account"/>
     </session-factory>
 </hibernate-configuration>

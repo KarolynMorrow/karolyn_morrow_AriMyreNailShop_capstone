@@ -1,8 +1,5 @@
-package com.perscholas.AriMyreNailShop.services.impl;
+package com.perscholas.AriMyreNailShop.premium;
 
-import com.perscholas.AriMyreNailShop.models.PremiumAccount;
-import com.perscholas.AriMyreNailShop.repositories.PremiumAccountRepository;
-import com.perscholas.AriMyreNailShop.services.PremiumAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.perscholas.AriMyreNailShop;
+package com.perscholas.AriMyreNailShop.misc;
 
 public interface INailShop {
     final boolean isAdmin = false;

@@ -1,5 +1,7 @@
-package com.perscholas.AriMyreNailShop.models;
+package com.perscholas.AriMyreNailShop.premium;
 
+import com.perscholas.AriMyreNailShop.account.Account;
+import com.perscholas.AriMyreNailShop.offered_svc.OfferedService;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,11 +22,11 @@ public class PremiumAccount extends Account {
     @NotNull
     private String email;
     @NotNull
-    private String userName;
+    private String username;
     @NotNull
-    private String passWord;
+    private String password;
 
-    private TreeMap<Date, Service> previousService;
+    private TreeMap<Date, OfferedService> previousService;
     private int points;
 
 
@@ -33,16 +35,16 @@ public class PremiumAccount extends Account {
 
     }
 
-    public PremiumAccount(String firstName, String lastName, String email, String userName) {
+    public PremiumAccount(String firstName, String lastName, String email, String username) {
         super(firstName, lastName, email);
-        this.userName = userName;
+        this.username = username;
     }
 
-    public PremiumAccount(String firstName, String lastName, LocalDate dateOfBirth, String email, String userName, String passWord) {
+    public PremiumAccount(String firstName, String lastName, LocalDate dateOfBirth, String email, String username, String password) {
         super(firstName, lastName, email);
         this.dateOfBirth = dateOfBirth;
-        this.userName = userName;
-        this.passWord = passWord;
+        this.username = username;
+        this.password = password;
     }
 
 
@@ -57,7 +59,7 @@ public class PremiumAccount extends Account {
         return "PremiumAccount: " +
                 getFirstName() + " " + getLastName() +
                 ", email='" + email + '\'' +
-                ", userName='" + userName + '\'';
+                ", userName='" + username + '\'';
     }
 
 

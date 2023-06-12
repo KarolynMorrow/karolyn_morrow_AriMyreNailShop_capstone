@@ -1,20 +1,23 @@
-package com.perscholas.AriMyreNailShop.models;
+package com.perscholas.AriMyreNailShop.offered_svc;
+
+import com.perscholas.AriMyreNailShop.appointment.Appointment;
 
 import javax.persistence.*;
 
 @Entity
-public class Service {
+@Table(name = "Service_for_appointment")
+public class OfferedService {
     @Id
     private int serviceId;
     private String serviceName;
     private int servicePrice;
-    @ManyToOne
-    private Appointment appointment;
+   /* @ManyToOne
+    private Appointment appointment;*/
 
-    public Service() {
+    public OfferedService() {
     }
 
-    public Service(int serviceId, String serviceName, int servicePrice) {
+    public OfferedService(int serviceId, String serviceName, int servicePrice) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.servicePrice = servicePrice;
@@ -44,11 +47,11 @@ public class Service {
         this.servicePrice = servicePrice;
     }
 
-    public Appointment getAppointment() {
+    /*public Appointment getAppointment() {
         return appointment;
     }
 
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
-    }
+    }*/
 }

@@ -1,4 +1,6 @@
-package com.perscholas.AriMyreNailShop.models;
+package com.perscholas.AriMyreNailShop.guest;
+
+import com.perscholas.AriMyreNailShop.account.Account;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

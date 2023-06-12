@@ -1,6 +1,6 @@
 package com.perscholas.AriMyreNailShop.misc;
 
-import com.perscholas.AriMyreNailShop.models.PremiumAccount;
+import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 
 public class Admin extends PremiumAccount {
     final boolean isAdmin = true;

@@ -1,6 +1,6 @@
-package com.perscholas.AriMyreNailShop;
+package com.perscholas.AriMyreNailShop.misc;
 
-import com.perscholas.AriMyreNailShop.models.Account;
+import com.perscholas.AriMyreNailShop.account.Account;
 
 import java.util.HashMap;
 import java.util.Map;

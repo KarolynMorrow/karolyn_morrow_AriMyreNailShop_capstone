@@ -1,22 +1,22 @@
-package com.perscholas.AriMyreNailShop.models;
+package com.perscholas.AriMyreNailShop.account;
 
-import com.perscholas.AriMyreNailShop.INailShop;
-import com.perscholas.AriMyreNailShop.NailShop;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @MappedSuperclass
 public abstract class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Client_Id")
-    private int accountId;
+    private long id;
+    @NotNull
     @Column(name = "First")
     private String firstName;
+    @NotNull
     @Column(name = "Last")
     private String lastName;
+
     @NotNull
     private String email;
     private boolean isPremium = false;
@@ -47,12 +47,12 @@ public abstract class Account {
         this.isPremium = isPremium;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public long getId() {
+        return id;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

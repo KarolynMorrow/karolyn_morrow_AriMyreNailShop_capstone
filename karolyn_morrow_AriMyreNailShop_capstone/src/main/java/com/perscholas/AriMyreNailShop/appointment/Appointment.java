@@ -1,4 +1,6 @@
-package com.perscholas.AriMyreNailShop.models;
+package com.perscholas.AriMyreNailShop.appointment;
+
+import com.perscholas.AriMyreNailShop.offered_svc.OfferedService;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,8 +12,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointmentId;
     private LocalDate appointmentDate;
-    @OneToMany(cascade = {CascadeType.ALL})
-    private List<Service> services;
+    /*@OneToMany(cascade = {CascadeType.ALL})
+    private List<OfferedService> offeredServices;*/
 
 
     public Appointment() {
@@ -35,13 +37,13 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    public List<Service> getServices() {
-        return services;
+    /*public List<OfferedService> getServices() {
+        return offeredServices;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
+    public void setServices(List<OfferedService> offeredServices) {
+        this.offeredServices = offeredServices;
+    }*/
 
 
 }
