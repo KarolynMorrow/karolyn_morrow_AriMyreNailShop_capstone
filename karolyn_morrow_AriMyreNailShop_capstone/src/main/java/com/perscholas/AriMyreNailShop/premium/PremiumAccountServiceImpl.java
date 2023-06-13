@@ -30,9 +30,10 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     @Override
     public void savePremiumAccount(PremiumAccount premiumAccount) {
         premiumRepository.save(premiumAccount);
+        System.out.println("Looking at these peeps");
+        System.out.println(premiumRepository.findAll());
     }
 
-    ;
 
     @Override
     public PremiumAccount getPremiumAccountById(long id) {

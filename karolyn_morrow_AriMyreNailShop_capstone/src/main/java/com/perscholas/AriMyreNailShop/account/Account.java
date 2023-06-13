@@ -3,6 +3,8 @@ package com.perscholas.AriMyreNailShop.account;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public abstract class Account {
@@ -10,14 +12,16 @@ public abstract class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Client_Id")
     private long id;
-    @NotNull
+    @NotEmpty(message = "User's name cannot be empty")
+    @Size(min = 5, max = 40)
     @Column(name = "First")
     private String firstName;
-    @NotNull
+    @NotEmpty(message = "User's name cannot be empty")
+    @Size(min = 5, max = 40)
     @Column(name = "Last")
     private String lastName;
 
-    @NotNull
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
     private boolean isPremium = false;
 

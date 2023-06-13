@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.TreeMap;
 
@@ -40,9 +41,11 @@ public class PremiumAccount extends Account {
         this.username = username;
     }
 
-    public PremiumAccount(String firstName, String lastName, LocalDate dateOfBirth, String email, String username, String password) {
+    public PremiumAccount(String firstName, String lastName, String dateOfBirth, String email, String username, String password) {
         super(firstName, lastName, email);
-        this.dateOfBirth = dateOfBirth;
+        System.out.println(dateOfBirth);
+
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.username = username;
         this.password = password;
     }

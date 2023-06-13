@@ -18,101 +18,84 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <form class="has-validation" action="#" th:action="@{/premiumAccount/save}" th:object="${premiumAccount}"
-                              id="registration" method="post">
+                        <form th:action="@{/premiumAccount/save}" th:object="${premiumAccount}" id="registration" method="post">
+
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration</h3>
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
-
                                     <div class="form-outline">
                                         <input type="text" th:field="*{firstName}" id="firstName"
-                                               class="form-control form-control-lg " required/>
-                                        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
-                                            First Name Error
-                                        </div>
+                                               class="form-control form-control-lg"/>
+                                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                                            Please input a first name
+                                        </p>
                                         <label class="form-label" for="firstName">First Name</label>
                                     </div>
-
                                 </div>
-                                <div class="col-md-6 mb-4">
 
+                                <div class="col-md-6 mb-4">
                                     <div class="form-outline">
                                         <input type="text" th:field="*{lastName}" id="lastName"
-                                               class="form-control form-control-lg" required/>
-                                        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last
-                                            Name Error
-                                        </div>
-
+                                               class="form-control form-control-lg"/>
+                                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                                            Please input a last name
+                                        </p>
                                         <label class="form-label" for="lastName">Last Name</label>
                                     </div>
-
                                 </div>
+
                             </div>
-
                             <div class="row">
-                                <div class="col-md-6 mb-4 d-flex align-items-center">
 
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
                                     <div class="form-outline datepicker w-100">
                                         <input type="date" th:field="*{dateOfBirth}"
                                                class="form-control form-control-lg" id="DOB"/>
-                                        <div th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">
-                                            Date of Birth Error
-                                        </div>
-
                                         <label for="DOB" class="form-label">Birthday</label>
                                     </div>
-
                                 </div>
 
                                 <div class="col-md-6 mb-4 pb-2">
-
                                     <div class="form-outline">
                                         <input type="text" th:field="*{username}" id="uName"
                                                class="form-control form-control-lg"/>
-                                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
-                                            Username Error
-                                        </div>
-
+                                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+                                            Please input a username
+                                        </p>
                                         <label class="form-label" for="uName">Username</label>
                                     </div>
-
                                 </div>
+
                             </div>
-
                             <div class="row">
-                                <div class="col-md-6 mb-4 pb-2">
 
+                                <div class="col-md-6 mb-4 pb-2">
                                     <div class="form-outline">
                                         <input type="email" th:field="*{email}" id="emailAddress"
-                                               class="form-control form-control-lg" required
-                                        />
-                                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
-                                            Error
-                                        </div>
-
+                                               class="form-control form-control-lg"/>
+                                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Please input an
+                                            email
+                                        </p>
                                         <label class="form-label" for="emailAddress">Email</label>
                                     </div>
-
                                 </div>
-                                <div class="col-md-6 mb-4 pb-2">
 
+                                <div class="col-md-6 mb-4 pb-2">
                                     <div class="form-outline">
                                         <input type="password" th:field="*{password}" id="pwd"
                                                class="form-control form-control-lg" required/>
-                                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
                                             Password Error
-                                        </div>
-
-                                        <label class="form-label" for="pwd">Enter a password</label>
+                                        </p>
+                                        <label class="form-label" for="pwd">Please enter a password</label>
                                     </div>
-
                                 </div>
+
                             </div>
-
                             <div class="row">
-                                <div class="col-12">
 
+                                <div class="col-12">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="photoAcceptance"
                                                name="photoAcceptance" required>
@@ -131,16 +114,14 @@
                                             appointment acceptance.</label>
                                         <div class="invalid-feedback">Please check the box</div>
                                     </div>
-
                                 </div>
+
                             </div>
                             <div class="valid-feedback">Valid</div>
                             <div class="invalid-feedback">Please fill out the required fields</div>
 
                             <div class="mt-4 pt-2">
-                                <a th:href="@{/premiumAccount/{id}(id=${premiumAccount.id})}" type="submit"
-                                   class="btn btn-lg">Create
-                                    Account</a>
+                                <button type="submit" class="btn btn-lg">Create Account</button>
                                 <a th:href="@{/login}" type="button" class="btn btn-lg">Go Back</a>
                             </div>
                         </form>

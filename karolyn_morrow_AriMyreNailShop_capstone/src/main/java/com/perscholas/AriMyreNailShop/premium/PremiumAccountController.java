@@ -37,15 +37,18 @@ public class PremiumAccountController {
     @PostMapping("/save")
     public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult result){
         if (result.hasErrors()) {
-            return "register";
+            return "html/signUp";
+
         }
+        System.out.println("This is creating an account");
         //save account to DB
         premiumService.savePremiumAccount(p);
-        return "redirect:html/premiumHome";
+        return "redirect: html/premiumHome";
     }
 
     @GetMapping("/{id}")
     public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
+        System.out.println(premiumService.getPremiumAccountById(id));
         model.addAttribute("premiumAccount", premiumService.getPremiumAccountById(id));
         return "html/premiumHome";
     }
