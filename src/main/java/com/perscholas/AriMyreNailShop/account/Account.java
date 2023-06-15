@@ -17,13 +17,13 @@ public abstract class Account {
     @Column(name = "First")
     private String firstName;
     @NotEmpty(message = "User's name cannot be empty")
-    @Size(min = 5, max = 40)
+    @Size(min = 2, max = 40)
     @Column(name = "Last")
     private String lastName;
 
     @NotEmpty(message = "Email cannot be empty")
     private String email;
-    private boolean isPremium = false;
+
 
 
     /*CONSTRUCTOR*/
@@ -38,24 +38,13 @@ public abstract class Account {
     }
 
 
-    /*METHODS*/
-
-
     /*Getters and Setters*/
-
-    public boolean getIsPremium(){
-        return isPremium;
-    }
-
-    public void setIsPremium(){
-        this.isPremium = isPremium;
-    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -81,6 +70,11 @@ public abstract class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /*METHODS*/
+    public boolean isPremium(){
+        return false;
     }
 
     @Override

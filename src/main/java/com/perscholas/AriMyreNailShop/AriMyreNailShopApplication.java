@@ -12,9 +12,6 @@ public class AriMyreNailShopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AriMyreNailShopApplication.class, args);
-		PremiumAccount karolyn = new PremiumAccount("karolyn", "morrow", "1994-06-23" ,"km@email.com", "Kmorrow", "password123");
-		System.out.println(karolyn);
-		System.out.println(karolyn.getPassword());
 	}
 
 

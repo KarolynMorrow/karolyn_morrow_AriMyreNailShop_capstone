@@ -2,8 +2,6 @@ package com.perscholas.AriMyreNailShop.premium;
 
 import com.perscholas.AriMyreNailShop.account.Account;
 import com.perscholas.AriMyreNailShop.appointment.Appointment;
-import com.perscholas.AriMyreNailShop.offered_svc.OfferedService;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.TreeMap;
 
 @Entity
 @Getter
@@ -58,6 +52,7 @@ public class PremiumAccount extends Account {
 
 
     /*METHODS*/
+    @Override
     public boolean isPremium() {
         return true;
     }

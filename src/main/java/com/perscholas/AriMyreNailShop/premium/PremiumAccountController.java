@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -39,10 +41,9 @@ public class PremiumAccountController {
         if (result.hasErrors()) {
             return "html/signUp";
         }
-        System.out.println("This is creating an account");
         //save account to DB
         premiumService.savePremiumAccount(p);
-        return "redirect:html/premiumHome";
+        return "redirect:/premiumAccount/{id}";
     }
 
     @GetMapping("/{id}")
@@ -55,10 +56,27 @@ public class PremiumAccountController {
     @GetMapping("/edit/{id}")
     public String updatePremiumForm(@PathVariable(value = "id") long id, Model model){
         PremiumAccount account = premiumService.getPremiumAccountById(id);
-        model.addAttribute("account", account);
+        model.addAttribute("premiumAccount", account);
        return "html/update";
     }
 
+    @GetMapping("/deleteAccount/{id}")
+    public String deletePremiumAccount(@PathVariable(name = "id") long id){
+        this.premiumService.deletePremiumAccount(id);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "html/login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/home";
+    }
     //Show a list of past appointments
 
 //@GetMapping("/appointments")
