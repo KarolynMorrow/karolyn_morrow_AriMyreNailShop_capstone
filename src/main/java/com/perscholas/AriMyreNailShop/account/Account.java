@@ -24,6 +24,8 @@ public abstract class Account {
     @NotEmpty(message = "Email cannot be empty")
     private String email;
 
+    private boolean isPremium = false;
+
 
 
     /*CONSTRUCTOR*/
@@ -72,10 +74,11 @@ public abstract class Account {
         this.email = email;
     }
 
-    /*METHODS*/
-    public boolean isPremium(){
-        return false;
+    public boolean isPremium() {
+        return isPremium;
     }
+
+    /*METHODS*/
 
     @Override
     public String toString() {

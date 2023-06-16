@@ -52,7 +52,7 @@ public class PremiumAccount extends Account {
 
 
     /*METHODS*/
-    @Override
+
     public boolean isPremium() {
         return true;
     }

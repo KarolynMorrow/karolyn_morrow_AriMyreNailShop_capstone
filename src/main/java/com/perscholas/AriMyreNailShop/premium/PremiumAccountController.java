@@ -43,12 +43,11 @@ public class PremiumAccountController {
         }
         //save account to DB
         premiumService.savePremiumAccount(p);
-        return "redirect:/premiumAccount/{id}";
+        return "redirect:/premiumAccount/login";
     }
 
     @GetMapping("/{id}")
     public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
-        System.out.println(premiumService.getPremiumAccountById(id));
         model.addAttribute("premiumAccount", premiumService.getPremiumAccountById(id));
         return "html/premiumHome";
     }
@@ -59,6 +58,20 @@ public class PremiumAccountController {
         model.addAttribute("premiumAccount", account);
        return "html/update";
     }
+
+    @PostMapping("/saveUpdate/{id}")
+    public String updateAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "html/update";
+        }
+        PremiumAccount updated = premiumService.getPremiumAccountById(p.getId());
+        updated.setFirstName(p.getFirstName());
+        updated.setLastName(p.getLastName());
+        updated.setEmail(p.getEmail());
+        updated.setPassword(p.getPassword());
+        return "redirect:/premiumAccount/{id}";
+    }
+
 
     @GetMapping("/deleteAccount/{id}")
     public String deletePremiumAccount(@PathVariable(name = "id") long id){
