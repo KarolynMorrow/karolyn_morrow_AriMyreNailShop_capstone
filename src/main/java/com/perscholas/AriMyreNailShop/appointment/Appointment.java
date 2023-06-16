@@ -14,11 +14,9 @@ public class Appointment {
     private int appointmentId;
     private LocalDate appointmentDate;
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    private List<OfferedService> offeredServices;
+    @OneToMany
+    private List<OfferedService> offeredServices; //creates LIST of offeredSvcs per Appointment
 
-    @ManyToOne
-    private PremiumAccount account;
 
     public Appointment() {
     }
@@ -41,13 +39,13 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    /*public List<OfferedService> getServices() {
+    public List<OfferedService> getServices() {
         return offeredServices;
     }
 
     public void setServices(List<OfferedService> offeredServices) {
         this.offeredServices = offeredServices;
-    }*/
+    }
 
 
 }

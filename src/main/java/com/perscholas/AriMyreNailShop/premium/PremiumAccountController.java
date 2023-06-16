@@ -69,7 +69,8 @@ public class PremiumAccountController {
         updated.setLastName(p.getLastName());
         updated.setEmail(p.getEmail());
         updated.setPassword(p.getPassword());
-        return "redirect:/premiumAccount/{id}";
+        premiumService.savePremiumAccount(updated);
+        return "redirect:/premiumAccount/" + id; //pass the id in the redirect instead of {id} as the url will pick up and try to find a literal string of "{id}"
     }
 
 
@@ -90,19 +91,6 @@ public class PremiumAccountController {
         session.invalidate();
         return "redirect:/home";
     }
-    //Show a list of past appointments
-
-//@GetMapping("/appointments")
-//    public ModelAndView getAppointments() {
-//        List<Appointment> appointmentList = appointmentService.getAllAppointments();
-//        return new ModelAndView("appointmentList", "appointment", appointmentList);
-//}
-//
-//    @PostMapping("/my_appointments")
-//    public String addAppointments(@ModelAttribute PremiumAccount p){
-//        premiumService.savePremiumAccount(p);
-//        return "redirect:/appointments";
-//    }
 
 
 

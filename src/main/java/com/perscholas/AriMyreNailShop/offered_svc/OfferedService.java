@@ -1,19 +1,24 @@
 package com.perscholas.AriMyreNailShop.offered_svc;
 
 import com.perscholas.AriMyreNailShop.appointment.Appointment;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Service_for_appointment")
+@Getter
+@Setter
 public class OfferedService {
+
     @Id
     private int serviceId;
     private String serviceName;
     private int servicePrice;
+    private String description;
 
-   /* @ManyToOne
-    private Appointment appointment;*/
+
+
 
     public OfferedService() {
     }
@@ -22,6 +27,14 @@ public class OfferedService {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.servicePrice = servicePrice;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getServiceId() {
