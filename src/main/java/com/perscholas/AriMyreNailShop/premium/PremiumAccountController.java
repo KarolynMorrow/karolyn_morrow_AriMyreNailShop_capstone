@@ -60,7 +60,7 @@ public class PremiumAccountController {
     }
 
     @PostMapping("/saveUpdate/{id}")
-    public String updateAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult bindingResult){
+    public String updateAccount(@PathVariable(value = "id") long id, @ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "html/update";
         }
