@@ -13,7 +13,6 @@ public interface AppointmentService {
     public List<Appointment> getAllAppointments();
 
     public Appointment getAppointmentById(long id);
-    
 
     public void deleteById(long id);
 

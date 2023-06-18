@@ -16,7 +16,7 @@
         <property name="hibernate.show_sql" >true </property>
         <property name="hibernate.format_sql" >true </property>
         <!-- Mapping entity file -->
-        <mapping class="com.perscholas.AriMyreNailShop.offered_svc.OfferedService"/>
+        <mapping class="com.perscholas.AriMyreNailShop.offered_svc.Treatment"/>
         <mapping class="com.perscholas.AriMyreNailShop.appointment.Appointment"/>
         <mapping class="com.perscholas.AriMyreNailShop.guest.GuestAccount"/>
         <mapping class="com.perscholas.AriMyreNailShop.premium.PremiumAccount"/>
