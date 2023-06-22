@@ -1,4 +1,4 @@
-package com.perscholas.AriMyreNailShop.misc;
+package com.perscholas.AriMyreNailShop.security;
 
 import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -18,7 +19,7 @@ public class LoginController {
     private PremiumAccountRepository premiumAccountRepository;
 
     @GetMapping("/login")
-    public String showLoginForm(Model model){
+    public String login(){
         return "html/login";
     }
 
@@ -36,6 +37,13 @@ public class LoginController {
             model.addAttribute("error", "Invalid username and/or password");
             return "html/login";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/home";
     }
 
 }

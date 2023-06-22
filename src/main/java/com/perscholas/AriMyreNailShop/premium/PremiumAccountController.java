@@ -29,22 +29,6 @@ public class PremiumAccountController {
         this.premiumService = premiumService;
     }
 
-    @GetMapping("/registration")
-    public String displayRegisterForm(Model model){
-        PremiumAccount premiumAccount = new PremiumAccount();
-        model.addAttribute("premiumAccount", premiumAccount);
-        return "html/signUp";
-    }
-
-    @PostMapping("/save")
-    public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult result){
-        if (result.hasErrors()) {
-            return "html/signUp";
-        }
-        //save account to DB
-        premiumService.savePremiumAccount(p);
-        return "redirect:/premiumAccount/login";
-    }
 
     @GetMapping("/{id}")
     public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
@@ -73,24 +57,13 @@ public class PremiumAccountController {
         return "redirect:/premiumAccount/" + id; //pass the id in the redirect instead of {id} as the url will pick up and try to find a literal string of "{id}"
     }
 
-
     @GetMapping("/deleteAccount/{id}")
     public String deletePremiumAccount(@PathVariable(name = "id") long id){
         this.premiumService.deletePremiumAccount(id);
         return "redirect:/home";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "html/login";
-    }
 
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.invalidate();
-        return "redirect:/home";
-    }
 
 
 

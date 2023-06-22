@@ -7,7 +7,6 @@ import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 
 @Repository
 public interface PremiumAccountRepository extends JpaRepository<PremiumAccount, Long> {
-
     PremiumAccount findByUsername(String username);
 
 }
