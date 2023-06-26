@@ -5,6 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.perscholas.AriMyreNailShop.appointment.Appointment;
 
+import java.time.LocalDate;
+
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+
+    Appointment findByAppointmentDate(LocalDate appointmentDate);
+
 }
