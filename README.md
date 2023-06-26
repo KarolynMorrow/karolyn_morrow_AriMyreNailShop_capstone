@@ -12,15 +12,19 @@ Creating a nail technicians starter business website in an attempt to ease her a
 - Future Improvements
 
 # Daily Progress
-- June 21st
-    - Began adding spring security login from class example
-- June 22nd
-    - Able to allow 'continue as guest' accessibility for basic but also guest home and ability to set up an appointment.
-    - Fixing registration mapping and saving into database
-    - Added 3 error html pages - 403, 404, and 500 under template/html
-    - Added LoginController and SignUpController.
-    - Set permissions for /registration, /home, /extraServices, and /chooseService
-    - ToDO: Figure out why input in form for "/registration" is not being saved into DB. Figure out why photos are not loading in.
+  - June 21st
+      - Began adding spring security login from class example
+  - June 22nd
+      - Able to allow 'continue as guest' accessibility for basic but also guest home and ability to set up an appointment.
+      - Fixing registration mapping and saving into database
+      - Added 3 error html pages - 403, 404, and 500 under template/html
+      - Added LoginController and SignUpController.
+      - Set permissions for /registration, /home, /extraServices, and /chooseService
+      - ToDO: Figure out why input in form for "/registration" is not being saved into DB. Figure out why photos are not loading in.
+  - June 26th
+    - Fixed photo loading in issue by ensuring webconfig class knew to ignore security based on .png and .jpg files. Was also able to have JS files work
+    - Began working on DOM manipulation for Treatment dropdown
+    - Getting assistance from sang as unknown issue why created account is not being saved in DB.
 
 # User Stories
 # Admin
