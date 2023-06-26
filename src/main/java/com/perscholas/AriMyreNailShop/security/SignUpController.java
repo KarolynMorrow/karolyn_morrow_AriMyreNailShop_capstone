@@ -23,15 +23,16 @@ public class SignUpController {
 
     @GetMapping("/registration")
     public String displayRegisterForm(Model model){
-        model.addAttribute("premiumAccount", new PremiumAccount());
+        PremiumAccount newAccount = new PremiumAccount();
+        model.addAttribute("premiumAccount", newAccount);
         return "html/signUp";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/signup")
     public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult result, Model model){
-        //PremiumAccount existingAccount = premiumService.getAccount(p.getUsername());
+       PremiumAccount existingAccount = premiumService.getAccount(p.getUsername());
 
-        if (result.hasErrors() /*&& existingAccount != null*/) {
+        if (result.hasErrors() && existingAccount != null) {
             model.addAttribute("error", "Username already exists. Please choose another username.");
             return "html/signUp";
         }

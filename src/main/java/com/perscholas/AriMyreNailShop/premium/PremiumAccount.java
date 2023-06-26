@@ -34,8 +34,8 @@ public class PremiumAccount extends Account implements UserDetails {
     @Size(min = 8, max = 15)
     private String password;
 
-    @OneToOne
-    private Appointment appointments;
+   /* @OneToOne
+    private Appointment appointments;*/
     private int points;
 
 
@@ -44,13 +44,14 @@ public class PremiumAccount extends Account implements UserDetails {
         super();
     }
 
-    public PremiumAccount(String firstName, String lastName, String email, String username) {
-        super(firstName, lastName, email);
+    public PremiumAccount(String firstName, String lastName, String email, String username, String password) {
+        super();
         this.username = username;
+        this.password = password;
     }
 
     public PremiumAccount(String firstName, String lastName, String dateOfBirth, String email, String username, String password) {
-        super(firstName, lastName, email);
+        super();
         this.dateOfBirth = dateOfBirth;
         this.username = username;
         this.password = password;

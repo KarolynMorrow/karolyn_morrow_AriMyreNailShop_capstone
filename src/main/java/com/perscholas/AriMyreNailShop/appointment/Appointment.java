@@ -19,6 +19,7 @@ public class Appointment {
 
     @OneToMany
     private List<Treatment> treatments; //creates LIST of offeredSvcs per Appointment
+    //when saving an appointment, have to save treatment FIRST since not using cascade all
 
 
     public Appointment() {
