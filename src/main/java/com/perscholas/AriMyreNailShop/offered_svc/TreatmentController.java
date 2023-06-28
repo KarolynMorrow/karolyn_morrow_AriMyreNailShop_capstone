@@ -17,7 +17,7 @@ public class TreatmentController {
 
     @GetMapping("/chooseService")
     public String getOfferedServicesPage(){
-        return "html/price";
+        return "html/servicePrices";
     }
 
     @GetMapping("/extraServices")

@@ -2,6 +2,7 @@ package com.perscholas.AriMyreNailShop.offered_svc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,10 +23,10 @@ public class TreatmentRestController {
     }
 
 
-    @GetMapping("/chooseService")
-    public List<Treatment> getAllTreatments(Treatment treatment) {
-        List<Treatment>treatments = treatmentService.getAllTreatments();
-        return treatments;
+    @GetMapping("/chooseService/{service}")
+    public Treatment getAllTreatments(@PathVariable String service) {
+
+        return null;
     }
 
 }
