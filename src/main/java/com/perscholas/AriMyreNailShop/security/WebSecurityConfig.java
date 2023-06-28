@@ -2,7 +2,9 @@ package com.perscholas.AriMyreNailShop.security;
 
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -30,10 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/home").permitAll()
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
-                        .mvcMatchers("/deleteEmployee/**").hasAnyRole("SUPERADMIN")
-                        .mvcMatchers("/showFormForUpdate/**").hasAnyRole("ADMIN", "SUPERADMIN")
-                        .mvcMatchers("/showEmployeeForm/**").hasAnyRole("ADMIN", "SUPERADMIN")
-                        .mvcMatchers("/saveEmployee/**").hasAnyRole("ADMIN", "SUPERADMIN")
+                        .mvcMatchers("/premiumAccount/**").hasAnyRole("ADMIN")
                         .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
@@ -42,6 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login"));
 
+    }
+
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Override

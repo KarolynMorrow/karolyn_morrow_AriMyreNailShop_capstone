@@ -3,6 +3,11 @@ package com.perscholas.AriMyreNailShop.security;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +23,11 @@ public class LoginController {
     @Autowired
     private PremiumAccountRepository premiumAccountRepository;
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     @GetMapping("/login")
-    public String login(){
+    public String showLogin(){
         return "html/login";
     }
 
@@ -28,13 +36,14 @@ public class LoginController {
                         @RequestParam("passWord") String password,
                         Model model){
         //Perform validation and authentication logic
-        PremiumAccount p = premiumAccountRepository.findByUsername(username);
-        if(p != null && p.getPassword().equals(password)){
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(username, password));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
             session.setAttribute("username", username);
-            return "redirect:html/premiumHome";
-        } else {
-            //Invalid login
-            model.addAttribute("error", "Invalid username and/or password");
+            return "redirect:/premiumAccount";
+        } catch (AuthenticationException e) {
+            model.addAttribute("error", "Invalid username or password");
             return "html/login";
         }
     }

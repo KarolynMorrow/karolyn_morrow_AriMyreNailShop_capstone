@@ -30,10 +30,10 @@ public class SignUpController {
 
     @PostMapping("/signup")
     public String addAccount(@ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult result, Model model){
-       PremiumAccount existingAccount = premiumService.getAccount(p.getUsername());
+//       PremiumAccount existingAccount = premiumService.getAccount(p.getUsername());
 
-        if (result.hasErrors() && existingAccount != null) {
-            model.addAttribute("error", "Username already exists. Please choose another username.");
+        if (result.hasErrors() /*&& existingAccount != null*/) {
+//            model.addAttribute("error", "Username already exists. Please choose another username.");
             return "html/signUp";
         }
         //save account to DB

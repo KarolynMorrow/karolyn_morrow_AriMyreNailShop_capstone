@@ -3,6 +3,8 @@ package com.perscholas.AriMyreNailShop.premium;
 
 import com.perscholas.AriMyreNailShop.appointment.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +34,9 @@ public class PremiumAccountController {
 
     @GetMapping("/{id}")
     public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
-        model.addAttribute("premiumAccount", premiumService.getPremiumAccountById(id));
+        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userPrincipal.getUsername();
+
         return "html/premiumHome";
     }
 
