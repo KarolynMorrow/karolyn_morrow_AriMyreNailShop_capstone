@@ -25,6 +25,10 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Fixed photo loading in issue by ensuring webconfig class knew to ignore security based on .png and .jpg files. Was also able to have JS files work
     - Began working on DOM manipulation for Treatment dropdown
     - Getting assistance from sang as unknown issue why created account is not being saved in DB.
+  - June 27th
+    - Created account is now saving to DB after fixing validation bug
+    - Began working on authentication with security 
+    - Began fetch code to obtain data for Treatments
 
 # User Stories
 # Admin
