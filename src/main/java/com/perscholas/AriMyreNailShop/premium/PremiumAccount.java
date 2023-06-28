@@ -30,8 +30,8 @@ public class PremiumAccount extends Account implements UserDetails {
     @NotEmpty
     private String username;
 
-    @NotEmpty
-    @Size(min = 8, max = 15)
+//    @NotEmpty
+//    @Size(min = 8, max = 15)
     private String password;
 
    /* @OneToOne
