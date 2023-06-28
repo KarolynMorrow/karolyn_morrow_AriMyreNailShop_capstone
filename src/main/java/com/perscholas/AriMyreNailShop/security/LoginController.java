@@ -23,33 +23,35 @@ public class LoginController {
     @Autowired
     private PremiumAccountRepository premiumAccountRepository;
 
-    @Autowired
+   @Autowired
     private AuthenticationManager authenticationManager;
 
     @GetMapping("/login")
-    public String showLogin(){
+    public String showLogin() {
         return "html/login";
     }
 
-    @PostMapping("/login")
-    public String login(HttpSession session, @RequestParam("userName") String username,
-                        @RequestParam("passWord") String password,
-                        Model model){
+    @PostMapping("/log")
+    public String login(HttpSession session, @RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        Model model) {
+        System.out.println("--------------" + username + password + "--------------");
         //Perform validation and authentication logic
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(username, password));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            session.setAttribute("username", username);
-            return "redirect:/premiumAccount";
-        } catch (AuthenticationException e) {
-            model.addAttribute("error", "Invalid username or password");
-            return "html/login";
-        }
+//        try {
+//            Authentication authentication = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(username, password));
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            session.setAttribute("username", username);
+//            return "redirect:/home";
+//        } catch (AuthenticationException e) {
+//            model.addAttribute("error", "Invalid username or password");
+//            return "html/home";
+//        }
+        return "html/home";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
         return "redirect:/home";

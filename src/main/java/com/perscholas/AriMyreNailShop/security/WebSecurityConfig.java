@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,6 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     //WEB ENDPOINTS - RESOURCES THAT WE WANT TO BE SECURED/Setting access
@@ -33,13 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
                         .mvcMatchers("/premiumAccount/**").hasAnyRole("ADMIN")
-                        .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+//                        .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
+                        .defaultSuccessUrl("/home")
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login"));
+                        .logoutSuccessUrl("/home"));
 
     }
 
@@ -51,31 +58,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        PasswordEncoder passwordEncoder
-                = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-        auth.inMemoryAuthentication()
-
-                .withUser("user")
-                .password(passwordEncoder.encode("user"))
-                .roles("USER")
-
-                .and()
-                .withUser("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("USER", "ADMIN")
-
-                .and()
-                .withUser("superadmin")
-                .password(passwordEncoder.encode("superadmin"))
-                .roles("USER", "ADMIN", "SUPERADMIN");
-
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-
-
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+
+
+
+
+ //   @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//
+//        PasswordEncoder passwordEncoder
+//                = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//
+//        auth.inMemoryAuthentication()
+//
+//                .withUser("user")
+//                .password(passwordEncoder.encode("user"))
+//                .roles("USER")
+//
+//                .and()
+//                .withUser("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .roles("USER", "ADMIN")
+//
+//                .and()
+//                .withUser("superadmin")
+//                .password(passwordEncoder.encode("superadmin"))
+//                .roles("USER", "ADMIN", "SUPERADMIN");
+//
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+//
+//
+//    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
