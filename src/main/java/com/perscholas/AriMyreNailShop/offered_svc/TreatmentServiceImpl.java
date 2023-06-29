@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Primary
@@ -24,8 +25,8 @@ public class TreatmentServiceImpl implements TreatmentService{
     }
 
     @Override
-    public Treatment getTreatmentById(int id) {
-        return treatmentRepository.findById(id).get();
+    public Optional<Treatment> getTreatmentByName(String serviceName) {
+        return treatmentRepository.findByServiceName(serviceName);
     }
 
     @Override
