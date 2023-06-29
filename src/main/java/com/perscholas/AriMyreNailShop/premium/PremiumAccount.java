@@ -22,7 +22,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "Premium")
+@Table(name = "users")
 public class PremiumAccount extends Account implements UserDetails {
 
     private String dateOfBirth;

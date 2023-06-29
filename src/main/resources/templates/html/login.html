@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../../static/images/Logo_with_character.png">
-    <link rel="stylesheet" type="text/css" href="../../static/styles/login.css" th:href="@{../styles/signUp.css}">
+    <link rel="stylesheet" type="text/css" href="../../static/styles/login.css" th:href="@{../styles/login.css}">
 </head>
 <body>
 
 <div class="overlay">
 
-    <form th:action="@{/log}" method="post" id="loginForm">
+    <form th:action="@{/login}" method="post" id="loginForm">
         <!--FORM CONTAINER START-->
         <div class="container">
             <!--HEADER START-->
@@ -55,7 +55,7 @@
             </div>
             <!--    SignUp/Continue As guest buttons    -->
 
-            <a href="signUp.html" th:href="@{/registration}">Sign Up</a>
+            <p>Not a member?<a href="signUp.html" th:href="@{/registration}">Sign Up</a></p>
             <a href="home.html" th:href="@{/home}">Continue as guest</a>
         </div>
 

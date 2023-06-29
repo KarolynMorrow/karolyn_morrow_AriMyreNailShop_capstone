@@ -1,6 +1,8 @@
 package com.perscholas.AriMyreNailShop.security;
 
+import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountService;
+import com.perscholas.AriMyreNailShop.premium.PremiumDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private PremiumAccountRepository premiumAccountRepository;
+
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -38,12 +44,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/home").permitAll()
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
-                        .mvcMatchers("/premiumAccount/**").hasAnyRole("ADMIN")
+                        .mvcMatchers("/premiumAccount/**").hasAnyRole("PREMIUM")
 //                        .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/home")
+                        //.failureUrl("/login")
                         .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/home"));
@@ -51,16 +58,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+//    @Override
+//    @Bean
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
 
+    //This code tells the AuthenticationManager to use PremiumDetailsServiceImpl instead of
+    // userDetailsService grabbing the info passed from the PremiumRepo and encodes the password provided
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+
 
 
 
