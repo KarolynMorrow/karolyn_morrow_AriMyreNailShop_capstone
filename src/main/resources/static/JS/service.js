@@ -1,41 +1,23 @@
-// Attach an onchange event listener to the dropdown
-document.getElementById("serviceDropdown").addEventListener("change", function() {
-  let selectedService = this.value;
-  if (selectedService) {
-    fetchServiceDetails(selectedService);
-  } else {
-    clearServiceDetails();
-  }
+$(document).ready(function(){
+//fetch treatment data from the server
+$.get('/api/treatments', function(data){
+//create the carousel slides dynamically on the treatments
+let carouselInner = $('#treatmentCarousel .carousel-inner');
+$.each(data, function(index, treatment){
+let slide = $('<div>').addClass('carousel-item');
+if (index === 0) {
+slide.addClass('active');
+}
+slide.append($('<h2>').text(treatment.serviceName));
+slide.append($('<p>').text(treatment.description));
+slide.append($('<p>').text('Price: ' + treatment.servicePrice));
+carouselInner.append(slide);
+
+});
+//Activate the carousel
+$('#treatmentCarousel').carousel();
+
 });
 
-// Function to fetch service details from the database
-function fetchServiceDetails(serviceName) {
-  // Make a request to the server to fetch the details based on the selected service
-  fetch('/api/chooseService/' + serviceName)
-    .then(response => response.json())
-    .then(data => {
-      // Update the HTML or create new elements in the DOM to display the fetched details
-      let serviceDetails = document.getElementById("serviceDetails");
-      serviceDetails.innerHTML = '';
 
-      // Create elements to display the details
-      let serviceNameElement = document.createElement("h2");
-      serviceNameElement.textContent = data.name;
-
-      let serviceDescriptionElement = document.createElement("p");
-      serviceDescriptionElement.textContent = data.description;
-
-      serviceDetails.appendChild(serviceNameElement);
-      serviceDetails.appendChild(serviceDescriptionElement);
-    })
-    .catch(error => {
-      console.error("Error occurred while fetching service details:", error);
-      clearServiceDetails();
-    });
-}
-
-// Function to clear the service details
-function clearServiceDetails() {
-  let serviceDetails = document.getElementById("serviceDetails");
-  serviceDetails.innerHTML = '';
-}
+});

@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface TreatmentRepository extends JpaRepository<Treatment, Integer> {
     public Optional<Treatment> findByServiceName(String serviceName);
+    public Optional<Treatment> findByServiceId(int serviceId);
 
 }
