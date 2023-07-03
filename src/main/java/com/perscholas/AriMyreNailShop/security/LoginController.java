@@ -29,6 +29,7 @@ public class LoginController {
         return "html/login";
     }
 
+    //default map and use user principal to get premiumAccount.id and route to premiumAccount/{id}
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
