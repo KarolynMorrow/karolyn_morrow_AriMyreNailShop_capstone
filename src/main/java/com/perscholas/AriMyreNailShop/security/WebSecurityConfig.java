@@ -24,14 +24,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    private PremiumAccountRepository premiumAccountRepository;
-
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Autowired
+//    private PremiumAccountRepository premiumAccountRepository;
+//
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 
     //WEB ENDPOINTS - RESOURCES THAT WE WANT TO BE SECURED/Setting access
@@ -44,13 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/home").permitAll()
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
+                        .mvcMatchers("/api/**").permitAll()
                         .mvcMatchers("/premiumAccount/**").hasAnyRole("PREMIUM")
 //                        .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home")
-                        //.failureUrl("/login")
+                        .defaultSuccessUrl("/extraServices")
+                        .failureUrl("/login")
                         .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/home"));
@@ -68,7 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // userDetailsService grabbing the info passed from the PremiumRepo and encodes the password provided
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        //auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
     }
 
 
