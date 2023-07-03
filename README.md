@@ -29,10 +29,24 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Created account is now saving to DB after fixing validation bug
     - Began working on authentication with security 
     - Began fetch code to obtain data for Treatments
+  - June 30th 
+    - Authorization works only on second attempt of login with same credentials. 
+    - Moved on to continue working on RestController and fetch JS code for Treatments data.
+  - July 3rd
+    - Fetched data shows through controller. Need to update carousel css and html to show correct data based on name
+    - Updated login page css 
+    - Updated error page 404 and 500 html
+    - Changed websecurityconfig file authorization for fetched data due to issues with login still, will change to SuperAdmin
+  
 
 # User Stories
 # Admin
 # Account holder
 # Technical Challenges
+ - Spring Security not registering that my passwords are coming in bcrypt. Updated password encryption in WebConfig class. Password was being registered with String "bcrypt" in front of it for the account creation but not for the POST verification so password technically was not the same.
+ - Spring Security is printing a message of ACCESS DENIED BEFORE signing in, even tho .permitAll access is given for login page. Ability to login with created account is successful on second attempt.
 # Lessons learned
+ - Spring Security has its own POST methods for sign in which handle the input of username and password
 # Future Improvements
+ - Providing SuperAdmin CRUD ability to the nail technician for price updates, changing, and/or deleting offered services.
+ - Allowing the premium account holders to view past appointments and based on date, allowing to make updates to requested appointments.
