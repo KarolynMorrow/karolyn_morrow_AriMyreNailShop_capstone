@@ -1,12 +1,11 @@
 package com.perscholas.AriMyreNailShop.security;
 
+import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
-import com.perscholas.AriMyreNailShop.premium.PremiumAccountService;
 import com.perscholas.AriMyreNailShop.premium.PremiumDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -24,9 +23,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private PremiumDetailsServiceImpl premiumDetailsService;
+
+    @Autowired
+    private PremiumAccountRepository premiumAccountRepository;
+
+//    private PremiumAccount premium;
+
 //    @Autowired
-//    private PremiumAccountRepository premiumAccountRepository;
-//
+//    private PasswordEncoder passwordEncoder;
+//    String pass =
+
+    public WebSecurityConfig() {
+
+    }
 //
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {
@@ -45,13 +56,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
                         .mvcMatchers("/api/**").permitAll()
-                        .mvcMatchers("/premiumAccount/**").hasAnyRole("PREMIUM")
-//                        .mvcMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+                        .mvcMatchers("/premiumAccount/**").authenticated()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/extraServices")
-                        .failureUrl("/login")
+                        .defaultSuccessUrl("/userProfile")
+                        .failureUrl("/home")
                         .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/home"));
@@ -68,18 +78,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //This code tells the AuthenticationManager to use PremiumDetailsServiceImpl instead of
     // userDetailsService grabbing the info passed from the PremiumRepo and encodes the password provided
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
         auth.userDetailsService(userDetailsService).passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+        System.out.println("------------" + premiumDetailsService + "--------------");
     }
 
 
-
-
-
-
-
- //   @Override
+//       @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //
 //        PasswordEncoder passwordEncoder
