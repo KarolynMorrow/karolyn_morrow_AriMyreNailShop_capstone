@@ -15,7 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -45,8 +45,8 @@
         <div id="svc" class="carousel-inner">
             <!-- Generate the slides dynamically based on the treatments -->
             <div id="treatments" class="carousel-item" th:each="treatment, index : ${treatments}" th:class="${index == 0} ? 'active' : ''">
-                <h2 th:text="${treatment.serviceName}"></h2>
-                <p th:text="${treatment.description}"></p>
+                <h2 class="serviceTitle" th:text="${treatment.serviceName}"></h2>
+                <p class="includedService" th:text="${treatment.description}"></p>
                 <p th:text="${treatment.servicePrice}"></p>
             </div>
         </div>
