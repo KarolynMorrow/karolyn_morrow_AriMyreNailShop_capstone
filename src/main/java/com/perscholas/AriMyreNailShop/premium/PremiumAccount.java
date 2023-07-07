@@ -22,7 +22,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "user")
 public class PremiumAccount extends Account implements UserDetails {
 
     private String dateOfBirth;
@@ -31,7 +31,7 @@ public class PremiumAccount extends Account implements UserDetails {
     private String username;
 
 //    @NotEmpty
-//    @Size(min = 8, max = 15)
+//    @Size(min = 8)
     private String password;
 
    /* @OneToOne
@@ -80,7 +80,7 @@ public class PremiumAccount extends Account implements UserDetails {
     // newly signed-up users.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_PREMIUM"));
 
     }
 
