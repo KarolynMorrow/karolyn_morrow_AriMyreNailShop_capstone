@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -33,22 +34,24 @@ public class PremiumAccountController {
 
 
     @GetMapping("/{id}")
-    public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model){
+    public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model) throws AccountNotFoundException {
         UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        PremiumAccount premiumAccount = premiumService.getPremiumAccountById(id);
         String username = userPrincipal.getUsername();
+        model.addAttribute("premiumAccount", premiumAccount);
 
         return "html/premiumHome";
     }
 
     @GetMapping("/edit/{id}")
-    public String updatePremiumForm(@PathVariable(value = "id") long id, Model model){
+    public String updatePremiumForm(@PathVariable(value = "id") long id, Model model) throws AccountNotFoundException {
         PremiumAccount account = premiumService.getPremiumAccountById(id);
         model.addAttribute("premiumAccount", account);
        return "html/update";
     }
 
     @PostMapping("/saveUpdate/{id}")
-    public String updateAccount(@PathVariable(value = "id") long id, @ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult bindingResult){
+    public String updateAccount(@PathVariable(value = "id") long id, @ModelAttribute("premiumAccount") @Valid PremiumAccount p, BindingResult bindingResult) throws AccountNotFoundException {
         if (bindingResult.hasErrors()){
             return "html/update";
         }

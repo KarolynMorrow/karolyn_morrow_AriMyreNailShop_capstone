@@ -39,18 +39,24 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     @Override
     public void savePremiumAccount(PremiumAccount premiumAccount) {
         premiumAccount.setPassword(passwordEncoder.encode(premiumAccount.getPassword()));
+        System.out.println("------------Before saving to DB: " + premiumAccount.getPassword() + "--------------");
+        if(premiumAccount.getPassword().startsWith("{bcrypt}")){
+            String passwordWithoutPrefix = premiumAccount.getPassword().substring("{bcrypt}".length());
+            premiumAccount.setPassword(passwordWithoutPrefix);
+        } else{
+            premiumAccount.getPassword();
+        }
         premiumRepository.save(premiumAccount);
     }
 
 
     @Override
-    public PremiumAccount getPremiumAccountById(long id) {
+    public PremiumAccount getPremiumAccountById(long id) throws AccountNotFoundException {
         Optional<PremiumAccount> optionalPremiumAccount = premiumRepository.findById(id);
         if (optionalPremiumAccount.isPresent()) {
             PremiumAccount premiumAccount = optionalPremiumAccount.get();
             return premiumAccount;
         }
-        //throw new AccountNotFoundException();
         return null;
     }
 
@@ -84,7 +90,7 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     public PremiumAccount updateAccount(PremiumAccount premiumAccount) {
         PremiumAccount existingAccount = premiumRepository.findByUsername(premiumAccount.getUsername());
 
-        if(existingAccount == null){
+        if (existingAccount == null) {
             throw new UserNotFoundException("Account does not exist with username: " +
                     premiumAccount.getUsername());
         }

@@ -1,5 +1,6 @@
 package com.perscholas.AriMyreNailShop.premium;
 
+import javax.security.auth.login.AccountNotFoundException;
 import java.util.List;
 
 public interface PremiumAccountService {
@@ -10,7 +11,7 @@ public interface PremiumAccountService {
     void savePremiumAccount(PremiumAccount premiumAccount);
 
     //Get one
-    PremiumAccount getPremiumAccountById(long id);
+    PremiumAccount getPremiumAccountById(long id) throws AccountNotFoundException;
 
     PremiumAccount getAccount(String username);
 
