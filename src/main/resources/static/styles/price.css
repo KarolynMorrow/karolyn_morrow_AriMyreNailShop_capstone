@@ -52,13 +52,13 @@ padding-bottom: 150px;
 .serviceTitle {
   text-decoration: underline;
   text-align: center;
-  font-family: Arizonia, Arial;
+  font-family: 'Yatra One', cursive;
   font-size: 40px;
   padding-bottom: 5px;
   border-style: double;
 }
 
-.serviceList {
+.carousel-inner {
 
 width: 500px;
   margin-left: 0px;
@@ -98,12 +98,12 @@ a:visited {
   color: rgb(14, 13, 13);
 }
 
-a:hover {
+div:hover {
   color: rgb(216, 185, 13);
   text-decoration: underline;
 }
 
-a:active {
+div:active {
   color: rgb(7, 7, 6);
 }
 
