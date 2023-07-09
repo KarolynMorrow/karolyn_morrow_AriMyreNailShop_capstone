@@ -4,21 +4,15 @@ import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.security.auth.login.AccountNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.nio.file.attribute.UserPrincipal;
 
 @Controller
 public class LoginController {
@@ -27,7 +21,8 @@ public class LoginController {
     private PremiumAccountRepository premiumAccountRepository;
 
     private PremiumAccount premiumAccount;
-    private PremiumAccountService service;
+    @Autowired
+    private PremiumAccountService premiumService;
 
 
     @GetMapping("/login")
@@ -38,9 +33,24 @@ public class LoginController {
     //default mapping and use user principal to get premiumAccount.id and route to premiumAccount/{id}
     @GetMapping("/userProfile")
     public String userProfilePage(Authentication authentication) throws AccountNotFoundException {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-        PremiumAccount premiumAccountId = service.getPremiumAccountById(premiumAccount.getId());
-        return "redirect:/premiumAccount/" + premiumAccountId;
+        if (authentication != null && authentication.isAuthenticated()) {
+            PremiumAccount premiumAccount = getPremiumAccountFromAuthentication(authentication);
+
+            if (premiumAccount != null) {
+                return "redirect:/premiumAccount/" + premiumAccount.getId();
+            } else {
+                return "redirect:/home";
+            }
+        }
+        return "redirect:/home";
+    }
+
+    private PremiumAccount getPremiumAccountFromAuthentication(Authentication authentication) throws AccountNotFoundException {
+        //retrieves PremiumAccount based on the authenticated user
+        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userPrincipal.getUsername();
+        return premiumService.getPremiumAccountByUsername(username);
+
     }
 
     @GetMapping("/logout")
