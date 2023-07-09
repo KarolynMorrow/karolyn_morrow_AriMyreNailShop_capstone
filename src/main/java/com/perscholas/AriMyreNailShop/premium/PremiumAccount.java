@@ -30,12 +30,15 @@ public class PremiumAccount extends Account implements UserDetails {
     @NotEmpty
     private String username;
 
-//    @NotEmpty
+    //    @NotEmpty
 //    @Size(min = 8)
     private String password;
 
-   /* @OneToOne
-    private Appointment appointments;*/
+
+    //One account can have many appointments
+    @OneToMany(mappedBy = "premiumAccount")
+    private List<Appointment> appointments;
+
     private int points;
 
 
@@ -76,7 +79,7 @@ public class PremiumAccount extends Account implements UserDetails {
 
     //Implemented methods from UserDetails
 
-    // For the simplicity of the app, we give ADMIN role to all
+    // For the simplicity of the app, we give PREMIUM role to all
     // newly signed-up users.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

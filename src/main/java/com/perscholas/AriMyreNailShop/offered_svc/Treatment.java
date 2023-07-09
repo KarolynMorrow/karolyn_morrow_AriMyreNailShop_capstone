@@ -1,5 +1,6 @@
 package com.perscholas.AriMyreNailShop.offered_svc;
 
+import com.perscholas.AriMyreNailShop.appointment.Appointment;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,12 @@ public class Treatment {
     private String serviceName;
     private int servicePrice;
     private String description;
+
+
+    //One treatment belongs to one appointment
+    @ManyToOne
+    @JoinColumn(name = "appointment_id")
+    private Appointment appointment;
 
 
 
