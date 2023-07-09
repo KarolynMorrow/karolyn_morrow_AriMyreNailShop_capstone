@@ -35,9 +35,9 @@ public class PremiumAccountController {
 
     @GetMapping("/{id}")
     public String showPremiumAccountHome(@PathVariable(value = "id") long id, Model model) throws AccountNotFoundException {
-        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         PremiumAccount premiumAccount = premiumService.getPremiumAccountById(id);
-        String username = userPrincipal.getUsername();
+//        String username = userPrincipal.getUsername();
         model.addAttribute("premiumAccount", premiumAccount);
 
         return "html/premiumHome";

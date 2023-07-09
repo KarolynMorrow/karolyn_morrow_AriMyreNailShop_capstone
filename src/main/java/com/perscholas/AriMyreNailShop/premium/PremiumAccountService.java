@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PremiumAccountService {
     //Get all
-    public List<PremiumAccount> getAllPremiumAccounts();
+    List<PremiumAccount> getAllPremiumAccounts();
 
     //Post
     void savePremiumAccount(PremiumAccount premiumAccount);
@@ -13,14 +13,15 @@ public interface PremiumAccountService {
     //Get one
     PremiumAccount getPremiumAccountById(long id) throws AccountNotFoundException;
 
-    PremiumAccount getAccount(String username);
+    PremiumAccount getPremiumAccountByUsername(String username) throws AccountNotFoundException;
 
+    PremiumAccount getAccount(String username);
     //delete
     void deletePremiumAccount(long id);
 
     //Post
-    public Boolean validateAccount(String username, String password);
+    Boolean validateAccount(String username, String password);
 
     //Put
-    public PremiumAccount updateAccount(PremiumAccount premiumAccount);
+    PremiumAccount updateAccount(PremiumAccount premiumAccount);
 }
