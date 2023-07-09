@@ -1,11 +1,15 @@
 package com.perscholas.AriMyreNailShop.appointment;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class AppointmentController {
 
-    //Show a list of past appointments on
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
+    //Show a list of all appointments on specific home page of premiumaccount holder
 
 //@GetMapping("/appointments")
 //    public ModelAndView getAppointments() {

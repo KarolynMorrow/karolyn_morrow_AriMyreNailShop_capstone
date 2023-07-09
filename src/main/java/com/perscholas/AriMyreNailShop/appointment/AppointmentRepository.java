@@ -1,5 +1,6 @@
 package com.perscholas.AriMyreNailShop.appointment;
 
+import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +12,6 @@ import java.time.LocalDate;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     Appointment findByAppointmentDate(LocalDate appointmentDate);
+    Appointment findByPremiumAccount(PremiumAccount premiumAccount);
 
 }
