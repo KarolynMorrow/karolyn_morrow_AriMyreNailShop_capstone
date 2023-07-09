@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-@MappedSuperclass
+@MappedSuperclass //means that this is a class used to map the entity classes
 @Getter
 @Setter
 public abstract class Account {
