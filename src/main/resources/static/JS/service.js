@@ -21,3 +21,21 @@ $('#treatmentCarousel').carousel();
 
 
 });
+
+
+const treatmentContainers = [...document.querySelectorAll('.carousel-inner)];
+const nxtBtn = [...document.querySelectorAll('.carousel-control-next')];
+const preBtn = [...document.querySelectorAll('.carousel-control-prev')];
+
+treatmentContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () =>{
+        item.scrollLeft -= containerWidth;
+    })
+})
