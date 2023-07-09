@@ -37,6 +37,10 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Updated login page css 
     - Updated error page 404 and 500 html
     - Changed websecurityconfig file authorization for fetched data due to issues with login still, will change to SuperAdmin
+  - July 8th (85% done)
+    - Authorization now works on first attempt
+    - Successful default mapping for authorized user
+    - Updating CSS for treatment carousel 
   
 
 # User Stories
