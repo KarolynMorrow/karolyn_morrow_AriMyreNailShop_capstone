@@ -12,6 +12,5 @@ import java.time.LocalDate;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     Appointment findByAppointmentDate(LocalDate appointmentDate);
-    Appointment findByPremiumAccount(PremiumAccount premiumAccount);
 
 }
