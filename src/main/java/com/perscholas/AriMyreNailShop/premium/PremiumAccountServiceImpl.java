@@ -39,7 +39,6 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     @Override
     public void savePremiumAccount(PremiumAccount premiumAccount) {
         premiumAccount.setPassword(passwordEncoder.encode(premiumAccount.getPassword()));
-        System.out.println("------------Before saving to DB: " + premiumAccount.getPassword() + "--------------");
         //if password starts with "{bcrypt}" remove before saving to db
 //        if(premiumAccount.getPassword().startsWith("{bcrypt}")){
 //            String passwordWithoutPrefix = premiumAccount.getPassword().substring("{bcrypt}".length());

@@ -1,0 +1,10 @@
+h1{
+text-decoration: underline wavy hotpink;
+margin-top: 50px;
+text-align: center;
+}
+
+#points {
+position: absolute;
+bottom: 0;
+}
