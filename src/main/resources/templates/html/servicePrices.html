@@ -14,7 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amita:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -37,37 +37,20 @@
         <!--Link instagram-->
     </p>
 
-    <!--BOOTSTRAP CAROUSEL-->
-    <div id="treatmentCarousel" class="carousel slide" data-ride="carousel" style="margin-left: -35px">
-
-        <!--Carousel slides-->
-        <div id="svc" class="carousel-inner">
-            <!-- Generate the slides dynamically based on the treatments -->
-            <div id="treatments" class="carousel-item" th:each="treatment, index : ${treatments}" th:class="${index == 0} ? 'active' : ''">
-                <h2 class="serviceTitle" th:text="${treatment.serviceName}"></h2>
-                <p class="includedService" th:text="${treatment.description}"></p>
-                <p th:text="${treatment.servicePrice}"></p>
-            </div>
+    <!-- Carousel container -->
+    <div id="treatmentCarousel" class="carousel slide" >
+        <div id="carousel-inner" class="carousel-inner">
+            <!-- Carousel slides will be dynamically added here -->
         </div>
-
-        <!--Indicators/dots-->
-        <ol class="carousel-indicators">
-            <!-- Generate the indicators dynamically based on the number of treatments -->
-            <li data-target="#treatmentCarousel" th:each="treatment, index : ${treatments}" th:data-slide-to="${index}" th:class="${index == 0} ? 'active' : ''"></li>
-        </ol>
-
-        <!--Left and right controls-->
-        <button id="pre-btn" class="carousel-control-prev" type="button" data-bs-toggle="#treatments" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            <span class="sr-only">Previous</span>
-        </button>
-        <button id="nxt-btn" class="carousel-control-next" type="button" data-bs-toggle="#treatments" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            <span class="sr-only">Next</span>
-        </button>
-
-
-
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" data-bs-target="#treatmentCarousel" type="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" data-bs-target="#treatmentCarousel" type="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
     </div>
 
 
@@ -77,10 +60,12 @@
     </h2>
     <h2><a th:href="@{/extraServices}">Optional add-ons</a></h2>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-<script src="JS/price.js"></script>
+
+
 <script src="JS/service.js"></script>
 </body>
 </html>

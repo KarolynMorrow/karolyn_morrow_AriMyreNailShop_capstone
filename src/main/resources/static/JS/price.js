@@ -9,18 +9,16 @@ const priceDisplay = document.getElementById("total");
 
 //Get html elements where the buttons are located using the tag name
 const buttons = document.querySelectorAll("button");
-
 //Add an onlick eventlistener to each button
 buttons.forEach(button => {
     button.addEventListener("click", ()=>{
-        //Obtain chosen service from price.html
 
 
         //check if button is pressed
         const isPressed = button.getAttribute("aria-pressed") === "true" ? true : false;
         console.log(isPressed);
 
-        //get the value of each button individually in extraSvcs.html
+        //get the value of each button individually
         const amountInput = button.value;
 
 
@@ -41,6 +39,10 @@ buttons.forEach(button => {
     });
 
 });
+
+function getTotalPrice(){
+return totalPrice;
+}
 
 
 

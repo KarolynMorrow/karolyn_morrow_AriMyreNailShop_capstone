@@ -1,41 +1,94 @@
-$(document).ready(function(){
-//fetch treatment data from the server
-$.get('/api/treatments', function(data){
-//create the carousel slides dynamically on the treatments
-let carouselInner = $('#treatmentCarousel .carousel-inner');
-$.each(data, function(index, treatment){
-let slide = $('<div>').addClass('carousel-item');
-if (index === 0) {
-slide.addClass('active');
-}
-slide.append($('<h2>').text(treatment.serviceName));
-slide.append($('<p>').text(treatment.description));
-slide.append($('<p>').text('Price: ' + treatment.servicePrice));
-carouselInner.append(slide);
+let totalPrice = 0;
 
-});
-//Activate the carousel
-$('#treatmentCarousel').carousel();
+//Get html element where price will be shown
+const priceDisplay = document.getElementById("total");
 
-});
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Fetch treatment data from the server
+  fetch('/api/treatments')
+    .then(response => response.json())
+    .then(data => {
+      // Get the carousel inner container
+      const carouselInner = document.querySelector('#carousel-inner');
+
+      // Create carousel slides dynamically
+      data.forEach((treatment, index) => {
+        // Create slide element
+        const slide = document.createElement('div');
+        slide.classList.add('carousel-item');
+        if (index === 0) {
+          slide.classList.add('active');
+        }
+
+        // Create slide content
+        const content = document.createElement('div');
+        content.id = treatment.serviceName;
+        content.className='treatments';
+
+        let svcTitle = document.createElement('h2');
+        svcTitle.className='serviceTitle';
+        svcTitle.textContent = treatment.serviceName;
+
+        let includedSvc = document.createElement('p');
+        includedSvc.className='includedService';
+        includedSvc.textContent = treatment.description;
+
+        let svcPrice = document.createElement('button');
+        svcPrice.className='btn btn-outline-primary price';
+        svcPrice.textContent = treatment.servicePrice;
+        svcPrice.value = treatment.servicePrice;
+        svcPrice.setAttribute("data-bs-toggle", "button");
+        svcPrice.setAttribute("aria-pressed", "false");
+
+        content.appendChild(svcTitle);
+        content.appendChild(includedSvc);
+        content.appendChild(svcPrice);
 
 
-});
 
 
-const treatmentContainers = [...document.querySelectorAll('.carousel-inner)];
-const nxtBtn = [...document.querySelectorAll('.carousel-control-next')];
-const preBtn = [...document.querySelectorAll('.carousel-control-prev')];
 
-treatmentContainers.forEach((item, i) => {
-    let containerDimensions = item.getBoundingClientRect();
-    let containerWidth = containerDimensions.width;
 
-    nxtBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
+svcPrice.addEventListener("click", ()=>{
+
+
+        //check if button is pressed
+        const isPressed = svcPrice.getAttribute("aria-pressed") === "true" ? true : false;
+        console.log(isPressed);
+
+        //get the value of each button individually
+        const amountInput = svcPrice.value;
+
+
+        //since button.value is a string parseInt changes value to int type
+        if(isPressed){
+            totalPrice += parseInt(amountInput);
+        } else {
+            totalPrice -= parseInt(amountInput);
+        }
+
+        if(totalPrice === 0){
+            priceDisplay.style.display = "none";
+        } else {
+            priceDisplay.style.display = "block";
+            priceDisplay.textContent = `Total Price: ${totalPrice}`;
+        }
+
+    });
+
+
+        // Append slide content to slide element
+        slide.appendChild(content);
+
+        // Append slide to carousel inner container
+        carouselInner.appendChild(slide);
+      });
+
+      // Activate the carousel
+      $('#treatmentCarousel').carousel();
     })
+    .catch(error => console.error('Error fetching data from the server:', error));
+});
 
-    preBtn[i].addEventListener('click', () =>{
-        item.scrollLeft -= containerWidth;
-    })
-})
+
