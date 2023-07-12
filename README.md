@@ -41,6 +41,10 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Authorization now works on first attempt
     - Successful default mapping for authorized user
     - Updating CSS for treatment carousel 
+  - July 11th (89% done)
+    - Successful fetching of data from calendly API
+    - Implemented mapping for appointment reading after creation
+    - Successful completion of carousel including addition and movement through carousel
   
 
 # User Stories
@@ -49,8 +53,11 @@ Creating a nail technicians starter business website in an attempt to ease her a
 # Technical Challenges
  - Spring Security not registering that my passwords are coming in bcrypt. Updated password encryption in WebConfig class. Password was being registered with String "bcrypt" in front of it for the account creation but not for the POST verification so password technically was not the same.
  - Spring Security is printing a message of ACCESS DENIED BEFORE signing in, even tho .permitAll access is given for login page. Ability to login with created account is successful on second attempt.
+ - Browser Firefox is throwing error when attempting to obtain fetched data, whereas browser edge is not throwing error and allowing treatmentCarousel to show RestAPI data.
 # Lessons learned
- - Spring Security has its own POST methods for sign in which handle the input of username and password
+ - Spring Security has its own POST methods for sign in which handle the input of username and password.
+ - Creation of GET mapping while needing an authorization token is done through a fetch method via JS code.
+ - Reading documentation on how to implement an API's data reading capabilities.
 # Future Improvements
  - Providing SuperAdmin CRUD ability to the nail technician for price updates, changing, and/or deleting offered services.
  - Allowing the premium account holders to view past appointments and based on date, allowing to make updates to requested appointments.
