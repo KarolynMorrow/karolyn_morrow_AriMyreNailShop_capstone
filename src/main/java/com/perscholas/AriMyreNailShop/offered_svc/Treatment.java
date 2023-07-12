@@ -18,14 +18,6 @@ public class Treatment {
     private String description;
 
 
-    //One treatment belongs to one appointment
-    @ManyToOne
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointment;
-
-
-
-
     public Treatment() {
     }
 

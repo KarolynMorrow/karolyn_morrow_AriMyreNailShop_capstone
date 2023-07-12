@@ -20,14 +20,9 @@ public class Appointment {
     private int appointmentId;
     private LocalDate appointmentDate;
 
-    //one appointment belongs to one account, but one account can have many appointments
-    @ManyToOne
-    @JoinColumn(name = "premium_account_id")
-    private PremiumAccount premiumAccount;
-
-
     //one appointment can have many treatments
-    @OneToMany(mappedBy = "appointment")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "appointment_id")
     private List<Treatment> treatments = new ArrayList<>(); //creates LIST of offeredSvcs per Appointment
     //when saving an appointment, have to save treatment FIRST since not using cascade all
 
