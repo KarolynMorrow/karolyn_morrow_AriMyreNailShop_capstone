@@ -6,14 +6,11 @@ import java.util.List;
 
 @Service
 public interface AppointmentService {
- 
 
-    public void save(Appointment a);
-
-    public List<Appointment> getAllAppointments();
-
-    public Appointment getAppointmentById(long id);
-
-    public void deleteById(long id);
+    void save(Appointment a);
+    List<Appointment> getAllAppointments();
+    Appointment getAppointmentById(long id);
+    void deleteById(long id);
+    void addTreatmentToAppointmentById(Appointment appointment, int serviceId);
 
 }
