@@ -45,6 +45,10 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Successful fetching of data from calendly API
     - Implemented mapping for appointment reading after creation
     - Successful completion of carousel including addition and movement through carousel
+  - July 14th (94% done)
+    - Completed auto increments of prices when chosen for appointment
+    - Began working on ORM between Appointment and Treatment
+    - Merged both servicePrices.html and extrasvcs.html to make a smoother checkout process under services.html
   
 
 # User Stories
@@ -58,6 +62,9 @@ Creating a nail technicians starter business website in an attempt to ease her a
  - Spring Security has its own POST methods for sign in which handle the input of username and password.
  - Creation of GET mapping while needing an authorization token is done through a fetch method via JS code.
  - Reading documentation on how to implement an API's data reading capabilities.
+ - For security reasons it is best to not make innerHTML in your JS code as hackers are able to obtain and or change the data easier.
 # Future Improvements
  - Providing SuperAdmin CRUD ability to the nail technician for price updates, changing, and/or deleting offered services.
  - Allowing the premium account holders to view past appointments and based on date, allowing to make updates to requested appointments.
+ - Update birthday input to (MM/DD) instead of (MM/DD/YYYY)
+ - Have code be accessible on all internet browsers(Firefox is not allowing fetched data to show)
