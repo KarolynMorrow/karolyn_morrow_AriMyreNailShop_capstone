@@ -64,3 +64,23 @@ body {
         background-color: #ebc7c7;
     }
 
+    #submitAppointment{
+        background-color: #fbf7f7;
+                border: none;
+                color: black;
+                padding: 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-weight: bold;
+                cursor: pointer;
+                margin: 20px;
+                border-style: solid;
+                font-size: 30px;
+                font-family: 'Amita', cursive;
+                border-radius: 30px;
+                opacity: 0.6;
+                position: absolute;
+
+    }
+
