@@ -1,4 +1,4 @@
-package com.perscholas.AriMyreNailShop.offered_svc;
+package com.perscholas.AriMyreNailShop.Treatment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,27 +9,26 @@ import java.util.List;
 
 @Controller
 public class TreatmentController {
+    @Autowired
     private TreatmentService treatmentService;
 
     @Autowired
     private TreatmentRepository treatmentRepository;
-    public TreatmentController(){
+
+    public TreatmentController() {
 
     }
+
     @Autowired
     public TreatmentController(TreatmentService treatmentService) {
         this.treatmentService = treatmentService;
     }
 
     @GetMapping("/chooseService")
-    public String getOfferedServicesPage(Model model){
+    public String getOfferedServicesPage(Model model) {
         List<Treatment> getTreatments = treatmentRepository.findAll();
         model.addAttribute("treatments", getTreatments);
-        return "html/servicePrices";
-    }
-
-    @GetMapping("/extraServices")
-    public String showExtraSvcsPage(){
-        return "html/extraSvcs";
+        return "html/services";
     }
 }
+
