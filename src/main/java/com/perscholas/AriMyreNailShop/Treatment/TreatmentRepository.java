@@ -1,4 +1,4 @@
-package com.perscholas.AriMyreNailShop.offered_svc;
+package com.perscholas.AriMyreNailShop.Treatment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

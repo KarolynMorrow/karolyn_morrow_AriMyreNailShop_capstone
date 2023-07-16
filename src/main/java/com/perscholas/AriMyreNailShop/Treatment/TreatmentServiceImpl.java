@@ -1,4 +1,4 @@
-package com.perscholas.AriMyreNailShop.offered_svc;
+package com.perscholas.AriMyreNailShop.Treatment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -32,5 +32,14 @@ public class TreatmentServiceImpl implements TreatmentService{
     @Override
     public void deleteById(int id) {
         treatmentRepository.deleteById(id);
+    }
+
+    @Override
+    public Treatment getTreatmentById(int serviceId) {
+        Treatment treatment = treatmentRepository.getById(serviceId);
+        if (treatment == null){
+            throw new TreatmentNotFoundException();
+        }
+        return treatment;
     }
 }

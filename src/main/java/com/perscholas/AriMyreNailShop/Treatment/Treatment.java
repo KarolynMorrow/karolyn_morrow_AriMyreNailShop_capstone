@@ -1,6 +1,5 @@
-package com.perscholas.AriMyreNailShop.offered_svc;
+package com.perscholas.AriMyreNailShop.Treatment;
 
-import com.perscholas.AriMyreNailShop.appointment.Appointment;
 import lombok.Getter;
 import lombok.Setter;
 
