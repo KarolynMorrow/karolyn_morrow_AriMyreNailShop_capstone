@@ -50,10 +50,7 @@
 
         </tr>
         </thead>
-        <tr th:each="appointment: ${appointments}">
-            <td th:text="${appointment.appointmentDate}"></td>
-            <td th:text="${treatment.serviceName}"></td>
-        </tr>
+        <tbody></tbody>
     </table>
 
     <!--Show available points AFTER a successful appointment and make sure to put a disclaimer that points wont
