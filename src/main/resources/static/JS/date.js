@@ -13,3 +13,34 @@ headers:{
 .catch(error => console.log(error))
 
 
+//Fetch request is pulling the data. Then using JavaScript you can dynamically fill your table with that data
+const populateTable = async () => {
+    const tableBody = document.querySelector('#appointmentTable tbody')
+    while (tableBody.firstChild){
+    tableBody.removeChild(tableBody.firstChild)
+    };
+
+    try{
+        const data = await response.json();
+
+        data.collection.forEach((item) => {
+            const row = document.createElement('tr');
+            const dateCell = document.createElement('td');
+            const treatmentCell = document.createElement('td');
+
+            const dateText = document.createTextNode(item.start_date);
+
+            dateCell.appendChild(dateText);
+            row.appendChild(dateCell);
+
+            tableBody.appendChild(row);
+
+        });
+        } catch (error){
+            console.error('Error fetching data:', error);
+
+        }
+
+    };
+
+    populateTable();
