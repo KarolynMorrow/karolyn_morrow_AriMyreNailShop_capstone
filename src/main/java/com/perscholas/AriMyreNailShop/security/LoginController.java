@@ -4,7 +4,6 @@ import com.perscholas.AriMyreNailShop.premium.PremiumAccount;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountRepository;
 import com.perscholas.AriMyreNailShop.premium.PremiumAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
