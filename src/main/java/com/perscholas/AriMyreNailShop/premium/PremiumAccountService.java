@@ -17,7 +17,7 @@ public interface PremiumAccountService {
 
     PremiumAccount getAccount(String username);
     //delete
-    void deletePremiumAccount(long id);
+    void deletePremiumAccount(long id) throws UserNotFoundException;
 
     //Post
     Boolean validateAccount(String username, String password);

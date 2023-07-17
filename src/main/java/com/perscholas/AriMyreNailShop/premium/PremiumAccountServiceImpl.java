@@ -1,11 +1,6 @@
 package com.perscholas.AriMyreNailShop.premium;
 
-import com.perscholas.AriMyreNailShop.security.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -63,7 +58,7 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     @Override
     public PremiumAccount getPremiumAccountByUsername(String username) throws AccountNotFoundException {
         PremiumAccount byUsername = premiumRepository.findByUsername(username);
-        if(byUsername != null){
+        if (byUsername != null) {
             return byUsername;
         }
         throw new UserNotFoundException("");
@@ -75,10 +70,14 @@ public class PremiumAccountServiceImpl implements PremiumAccountService {
     }
 
     @Override
-    public void deletePremiumAccount(long id) {
-        premiumRepository.deleteById(id);
+    public void deletePremiumAccount(long id) throws UserNotFoundException {
+        Optional<PremiumAccount> optionalPremiumAccount = premiumRepository.findById(id);
+        if (optionalPremiumAccount.isPresent()) {
+            premiumRepository.delete(optionalPremiumAccount.get());
+        } else {
+            throw new UserNotFoundException("User does not exist with ID: " + id);
+        }
     }
-
     @Override
     public Boolean validateAccount(String username, String password) {
         PremiumAccount existingAccount = premiumRepository.findByUsername(username);

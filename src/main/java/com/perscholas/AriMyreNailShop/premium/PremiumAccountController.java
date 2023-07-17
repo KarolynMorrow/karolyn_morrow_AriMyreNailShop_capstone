@@ -3,16 +3,12 @@ package com.perscholas.AriMyreNailShop.premium;
 
 import com.perscholas.AriMyreNailShop.appointment.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.login.AccountNotFoundException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -65,7 +61,7 @@ public class PremiumAccountController {
     }
 
     @GetMapping("/deleteAccount/{id}")
-    public String deletePremiumAccount(@PathVariable(name = "id") long id){
+    public String deletePremiumAccount(@PathVariable(name = "id") long id) throws AccountNotFoundException{
         this.premiumService.deletePremiumAccount(id);
         return "redirect:/home";
     }
