@@ -55,6 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers("/home").permitAll()
                         .mvcMatchers("/chooseService").permitAll()
                         .mvcMatchers("/extraServices").permitAll()
+                        .mvcMatchers("/aboutMe").permitAll()
+                        .mvcMatchers("/contactMe").permitAll()
                         .mvcMatchers("/api/**").permitAll()
                         .mvcMatchers("/premiumAccount/**").authenticated()
                         .anyRequest().authenticated())
