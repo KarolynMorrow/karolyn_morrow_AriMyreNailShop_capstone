@@ -14,6 +14,27 @@ priceDisplay.textContent = `Total Price: ${totalPrice}`;
 
 }
 
+// Function to add a row to the choices table
+function addToAppointmentTable(treatment, addOns) {
+  // Get the choices table body element
+  const choicesTableBody = document.querySelector('#appointmentTable tbody');
+
+  // Create a new row
+  const newRow = document.createElement('tr');
+
+  // Create treatment cell
+  const treatmentCell = document.createElement('td');
+  treatmentCell.textContent = treatment;
+  newRow.appendChild(treatmentCell);
+
+  // Create add-ons cell
+  const addOnsCell = document.createElement('td');
+  addOnsCell.textContent = addOns.join(', ');
+  newRow.appendChild(addOnsCell);
+
+  // Append the new row to the table body
+  choicesTableBody.appendChild(newRow);
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -98,11 +119,8 @@ svcPrice.addEventListener("click", ()=>{
 });
 
 
- //Get html elements for the add-ons buttons
-    const addOnButtons = document.querySelectorAll("button")
-
     //Event listener for the add-ons buttons
-    addOnButtons.forEach(button => {
+    document.querySelectorAll("button").forEach(button => {
         button.addEventListener("click", () => {
             const isPressed = button.getAttribute("aria-pressed") === "true" ? true : false;
             console.log(isPressed);
@@ -120,4 +138,37 @@ svcPrice.addEventListener("click", ()=>{
 
     });
 
+
+// Get html elements for the add-ons buttons
+const addOnButtons = document.querySelectorAll("button.treatmentButton");
+
+// Event listener for the treatment button click
+function treatmentButtonClicked() {
+  // Get the clicked treatment button
+  var clickedButton = event.target;
+
+  // Get the parent row and its unique identifier
+  var parentRow = clickedButton.closest('div.treatments');
+  var treatment = parentRow.id;
+
+  // Check if the treatment button is currently clicked or unclicked
+  var isClicked = clickedButton.checked;
+
+  // Get the selected add-ons
+  var addOns = [];
+  addOnButtons.forEach(button => {
+    if (button.getAttribute('aria-pressed') === 'true') {
+      addOns.push(button.textContent);
+    }
+  });
+
+  // Add the chosen treatment and add-ons to the table
+  addToAppointmentTable(treatment, addOns);
+}
+
+// Attach the click event handler to all treatment buttons
+var treatmentButtons = document.getElementsByClassName('treatmentButton');
+for (var i = 0; i < treatmentButtons.length; i++) {
+  treatmentButtons[i].addEventListener('click', treatmentButtonClicked);
+}
 
