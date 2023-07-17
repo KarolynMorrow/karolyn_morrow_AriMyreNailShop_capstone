@@ -23,8 +23,8 @@
             <li class="nav-item"><a class="nav-link" th:href="@{/premiumAccount/{id}(id=${premiumAccount.id})}">Home</a>
             </li>
             <li class="nav-item"><a class="nav-link" th:href="@{/chooseService}">Price List</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact Me</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/aboutMe}">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/contactMe}">Contact Me</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/premiumAccount/edit/{id}(id=${premiumAccount.id})}">Update
                 Account</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
@@ -45,8 +45,10 @@
     <table id="appointmentTable" class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Appointment Date: </th>
-            <th scope="col">Appointment Type: </th>
+            <th>Appointment Date: </th>
+            <th>Treatment: </th>
+            <th>Add-ons: </th>
+
 
         </tr>
         </thead>

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AriMyre</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="../../static/styles/header.css" th:href="@{../styles/header.css}">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -12,11 +16,17 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" th:href="@{/userProfile}">Home</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/chooseService}">Price List</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Me</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/aboutMe}">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/contactMe}">Contact Me</a></li>
         </ul>
     </div>
 </nav>
+<p>
+    Officia sunt culpa est ipsum voluptate nulla quis ad. Fugiat non sit mollit officia dolor officia sit elit in sint commodo ea nisi. Fugiat sunt culpa eu aute est sunt in cupidatat. Adipisicing adipisicing do ullamco eiusmod eiusmod officia ad et. Qui aute labore qui esse exercitation in reprehenderit. Mollit ea culpa pariatur laborum qui officia aute.
+    Voluptate laboris elit Lorem adipisicing excepteur proident tempor dolor officia est. Non cupidatat fugiat excepteur est adipisicing ullamco adipisicing duis consectetur ad sint. Tempor nostrud deserunt nisi cillum et. Pariatur nulla deserunt ea laborum irure reprehenderit tempor sint aliqua do laboris reprehenderit aliqua ad. Dolor fugiat sunt laborum aliqua.
+    Deserunt enim ea enim non eu. Enim ad aliqua tempor cupidatat aliqua ullamco qui ex pariatur id ipsum velit. Excepteur sint est qui cillum eiusmod amet officia tempor ex labore. Proident anim exercitation incididunt labore aliquip adipisicing sunt. Laboris pariatur dolor esse voluptate anim duis ullamco consectetur nulla mollit sint voluptate aute enim. Velit irure cupidatat reprehenderit labore culpa. Commodo adipisicing aute exercitation commodo anim adipisicing velit.
+    Fugiat mollit est excepteur tempor. Laborum laborum ex est qui enim culpa est non elit culpa. Id cupidatat dolore veniam ullamco commodo velit incididunt anim.
+</p>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
