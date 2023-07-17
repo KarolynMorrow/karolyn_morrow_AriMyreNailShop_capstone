@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -74,6 +75,20 @@ public class PremiumAccount extends Account implements UserDetails {
                 ", email='" + getEmail() + '\'' +
                 ", userName='" + username + '\'';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PremiumAccount account = (PremiumAccount) o;
+        return points == account.points && Objects.equals(dateOfBirth, account.dateOfBirth) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(appointments, account.appointments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateOfBirth, username, password, appointments, points);
+    }
+
 
     //Implemented methods from UserDetails
 

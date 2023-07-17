@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -26,4 +27,17 @@ public class Treatment {
         this.servicePrice = servicePrice;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Treatment treatment = (Treatment) o;
+        return serviceId == treatment.serviceId && servicePrice == treatment.servicePrice && Objects.equals(serviceName, treatment.serviceName) && Objects.equals(description, treatment.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceId, serviceName, servicePrice, description);
+    }
 }
