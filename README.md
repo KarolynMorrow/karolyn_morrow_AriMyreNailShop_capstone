@@ -49,9 +49,12 @@ Creating a nail technicians starter business website in an attempt to ease her a
     - Completed auto increments of prices when chosen for appointment
     - Began working on ORM between Appointment and Treatment
     - Merged both servicePrices.html and extrasvcs.html to make a smoother checkout process under services.html
-  
+  - July 16th (98% done)
+    - Completed testing methods for repositories and service classes that are completed
+    - Updated default mapping to ensure 500 error code was not reached when hitting home button as a guest
 
 # User Stories
+https://trello.com/invite/b/N7GEjNiu/ATTI7c5577835d175c12ef7fd673ed40cbb6DEDDB181/arimyre
 # Admin
 # Account holder
 # Technical Challenges
@@ -68,3 +71,5 @@ Creating a nail technicians starter business website in an attempt to ease her a
  - Allowing the premium account holders to view past appointments and based on date, allowing to make updates to requested appointments.
  - Update birthday input to (MM/DD) instead of (MM/DD/YYYY)
  - Have code be accessible on all internet browsers(Firefox is not allowing fetched data to show)
+ - Home page card flip showing specific services of photo on card
+ - Provide SuperAdmin ability to update each account holders points based on a successful visit
