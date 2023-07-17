@@ -32,26 +32,21 @@ public class LoginController {
 
     //default mapping and use user principal to get premiumAccount.id and route to premiumAccount/{id}
     @GetMapping("/userProfile")
-    public String userProfilePage(Authentication authentication) throws AccountNotFoundException {
-        if (authentication != null && authentication.isAuthenticated()) {
-            PremiumAccount premiumAccount = getPremiumAccountFromAuthentication(authentication);
+    public String userProfilePage() throws AccountNotFoundException {
 
-            if (premiumAccount != null) {
-                return "redirect:/premiumAccount/" + premiumAccount.getId();
+        //retrieves PremiumAccount based on the authenticated user
+
+        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = userPrincipal.getUsername();
+        PremiumAccount premiumAccount1 = premiumService.getPremiumAccountByUsername(username);
+
+        if (premiumAccount1 != null) {
+                return "redirect:/premiumAccount/" + premiumAccount1.getId();
             } else {
                 return "redirect:/home";
             }
         }
-        return "redirect:/home";
-    }
 
-    private PremiumAccount getPremiumAccountFromAuthentication(Authentication authentication) throws AccountNotFoundException {
-        //retrieves PremiumAccount based on the authenticated user
-        UserDetails userPrincipal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username = userPrincipal.getUsername();
-        return premiumService.getPremiumAccountByUsername(username);
-
-    }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
